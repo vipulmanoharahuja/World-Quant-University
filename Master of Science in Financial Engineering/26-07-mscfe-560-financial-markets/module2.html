@@ -89,15 +89,39 @@ tr:nth-child(even) td{background:#f4f8fb;}
 .doodle{font-size:14px; color:#78909c; font-style:italic;}
 .chk li::marker{content:'✓ '; color:#2e7d32;}
 .cross li::marker{content:'✗ '; color:#c62828;}
-.back-to-top{text-align:right; margin:18px 0;}
+.back-to-top{text-align:center; margin:18px 0; font-size:16px;}
 .back-to-top a{font-family:'Caveat',cursive; font-size:20px; color:#1a4b8c; text-decoration:none; font-weight:700;}
 .back-to-top a:hover{text-decoration:underline;}
-@media(max-width:640px){.notebook{padding:24px 14px 40px 44px;} .notebook::before{left:30px;} h1{font-size:34px;} .cover h1{font-size:38px;}}
-@media print{body{background:#fff;} .notebook{box-shadow:none; margin:0; max-width:100%;} .back-to-top{display:none;}}
+.back-to-top .sep{color:#9aa5b1; margin:0 8px;}
+.quicknav{
+  position:sticky; top:0; z-index:100; margin:-40px -40px 24px -78px;
+  display:flex; gap:6px; overflow-x:auto; white-space:nowrap;
+  background:#1a4b8c; padding:10px 16px; box-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+.quicknav a{
+  color:#fff; text-decoration:none; font-family:'Caveat',cursive; font-size:18px; font-weight:700;
+  background:rgba(255,255,255,.15); padding:3px 14px; border-radius:14px; flex-shrink:0;
+}
+.quicknav a:hover{background:rgba(255,255,255,.32);}
+@media(max-width:640px){.notebook{padding:24px 14px 40px 44px;} .notebook::before{left:30px;} h1{font-size:34px;} .cover h1{font-size:38px;} .quicknav{margin:-24px -14px 20px -44px;}}
+@media print{body{background:#fff;} .notebook{box-shadow:none; margin:0; max-width:100%;} .back-to-top,.quicknav{display:none;}}
 </style>
 </head>
 <body>
 <div class="notebook">
+
+<nav class="quicknav">
+  <a href="#top">🏠 Top</a>
+  <a href="#toc">📑 Index</a>
+  <a href="#l1">Lesson 1</a>
+  <a href="#l2">Lesson 2</a>
+  <a href="#l3">Lesson 3</a>
+  <a href="#l4">Lesson 4</a>
+  <a href="#r1">Reading 1</a>
+  <a href="#r2">Reading 2</a>
+  <a href="#r3">Reading 3</a>
+  <a href="#cheat">⚡ Cheat Sheet</a>
+</nav>
 
 <!-- ================= COVER ================= -->
 <div class="cover" id="top">
@@ -347,7 +371,7 @@ Most conservative; principal + interest virtually guaranteed if issuer solvent. 
 Little/no intrinsic value (no products/services). Value-add: publicly distributed ledger for many applications — but value <em>subjective</em>. $0 → tens of thousands (projected ~$100,000 while notes were written). +50% to +1000s% possible… <mark class="p">but losing 90% is equally easy</mark>; 40–50% corrections common. Athletes paid in BTC sometimes found much smaller amounts at withdrawal time.</div>
 </div>
 
-<div class="back-to-top"><a href="#toc">⬆ Back to Index</a></div>
+<div class="back-to-top"><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#l2">Next: Lesson 2 →</a></div>
 
 <!-- ================= LESSON 2 ================= -->
 <div class="lesson-hd" id="l2">
@@ -438,7 +462,7 @@ Fiber service = physical towers: land purchase + tech implementation + servicing
 </div>
 <div class="sticky blue"><b>📌 Bottom line:</b> crypto is hard to trade/model — data volume + market newness + <b>no traditional valuation methods</b> (unlike equities/fixed income) ⟹ statistics are needed → Lesson 3!</div>
 
-<div class="back-to-top"><a href="#toc">⬆ Back to Index</a></div>
+<div class="back-to-top"><a href="#l1">← Lesson 1</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#l3">Next: Lesson 3 →</a></div>
 
 <!-- ================= LESSON 3 ================= -->
 <div class="lesson-hd" id="l3">
@@ -531,7 +555,7 @@ Stock C: premium 7%, σ 10% ⟹ 0.70 &nbsp;|&nbsp; Stock D: premium 8%, σ 12% �
 <div class="keypt"><span class="tag">⭐ Direction rule (memorize!)</span>
 <mark class="b">CV (vol per return) → LOWER better</mark> &nbsp;&nbsp;vs&nbsp;&nbsp; <mark class="g">Sharpe (return per vol) → HIGHER better</mark></div>
 
-<div class="back-to-top"><a href="#toc">⬆ Back to Index</a></div>
+<div class="back-to-top"><a href="#l2">← Lesson 2</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#l4">Next: Lesson 4 →</a></div>
 
 <!-- ================= LESSON 4 ================= -->
 <div class="lesson-hd" id="l4">
@@ -601,7 +625,7 @@ Symmetric (asymmetric versions exist); HAS excess kurtosis; described by ONE par
 If skew or excess kurtosis is present ⟹ normal is discredited. Returns normal ⟹ life is easy (mean + SD suffice). Not normal ⟹ ① switch to a skew/kurtosis-reflecting distribution (needs more modeling skill) or ② go <b>nonparametric</b> (raw data, no distribution). Tool: a Shiny app — select high-volatility date ranges and watch the distribution change.<br><br>
 <b>Volatility takeaway:</b> volatility = the fluctuation investors tolerate; the preference is investor-specific. The job of Financial Engineering: metrics/models that represent volatility even when it's dynamic. Next lesson: <b>correlation</b> (pairs of securities).</div>
 
-<div class="back-to-top"><a href="#toc">⬆ Back to Index</a></div>
+<div class="back-to-top"><a href="#l3">← Lesson 3</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#r1">Next: Reading 1 →</a></div>
 
 <!-- ================= READINGS ================= -->
 <div class="lesson-hd" id="r1" style="background:linear-gradient(135deg,#00695c,#26a69a);">
@@ -670,6 +694,8 @@ Current system: money created with loans; bank deposits ARE bank debt to account
 </ul>
 <div class="sticky"><b>🎯 Ch.1 exam nuggets:</b> commercial banks create most money via lending • 3 functions of money • Bitcoin fails all three (Box 1.2) • money = social construct on trust • debt = incomplete/non-simultaneous exchange (Graeber) • cash is money but NOT debt.</div>
 
+<div class="back-to-top"><a href="#l4">← Lesson 4</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#r2">Next: Reading 2 →</a></div>
+
 <!-- ================= READING 2 ================= -->
 <div class="lesson-hd" id="r2" style="background:linear-gradient(135deg,#4a148c,#7b1fa2);">
   <h2>📖 Reading 2 — Kjærland et al., "An Analysis of Bitcoin's Price Dynamics" (JRFM 2018)</h2>
@@ -728,6 +754,8 @@ Supply is deterministic ⟹ adding processing power does NOT increase output ⟹
 <div class="alert"><span class="tag">✗ Insignificant</span>
 <b>VIX</b> (except 2017–18 sub-period: NEGATIVE relation ⟹ <mark>Bitcoin does NOT show safe-haven properties</mark> — inconsistent with Bouri et al. 2017a/b), <b>oil, gold</b> (⟹ BTC lacks commodity properties; in line with Bouri et al. 2018b), <b>transaction volume</b> (in ARDL; significant negative in GARCH). GARCH: ARCH+GARCH effects ≈ 87.7–90.5% ⟹ <b>strong volatility persistence</b>.</div>
 
+<div class="back-to-top"><a href="#r1">← Reading 1</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#r3">Next: Reading 3 →</a></div>
+
 <!-- ================= READING 3 ================= -->
 <div class="lesson-hd" id="r3" style="background:linear-gradient(135deg,#880e4f,#c2185b);">
   <h2>📖 Reading 3 — Levenkron, <em>There's More Than Meets the Eye: Looking at Art as an Alternative Investment</em></h2>
@@ -747,6 +775,8 @@ Index of prices/returns of paintings by the <b>world's top 500 artists</b>, comp
 <li><b>Conclusion:</b> despite high returns, high risk makes art an <mark class="p">unappealing investment</mark></li>
 </ul></div>
 <div class="sticky blue"><b>🔗 Lesson link:</b> Lesson 2 §7 (alternative assets, no periodic cash flows) + Lesson 3's Sharpe logic — <b>"highest return" ≠ "best investment"</b>; it's essential to check return PER UNIT of volatility. Positive equity correlation ⟹ diversification benefit is also limited!</div>
+
+<div class="back-to-top"><a href="#r2">← Reading 2</a><span class="sep">|</span><a href="#toc">⬆ Index</a><span class="sep">|</span><a href="#cheat">Next: Cheat Sheet →</a></div>
 
 <!-- ================= CHEAT SHEET ================= -->
 <div class="lesson-hd" id="cheat" style="background:linear-gradient(135deg,#e65100,#f57c00);">
@@ -783,7 +813,7 @@ Index of prices/returns of paintings by the <b>world's top 500 artists</b>, comp
 <li>Commercial banks create most money via lending (Stellinga); cash is money but NOT debt.</li>
 </ol></div>
 
-<div class="back-to-top"><a href="#toc">⬆ Back to Index</a></div>
+<div class="back-to-top"><a href="#r3">← Reading 3</a><span class="sep">|</span><a href="#toc">⬆ Index</a></div>
 
 <p class="doodle" style="text-align:center; margin-top:40px;">— End of Module 2 register • All the best! 🍀 Next up: correlation —</p>
 </div>
