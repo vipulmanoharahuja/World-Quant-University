@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2 — Stocks &amp; Cryptocurrencies | Register Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fdfaf1; --line:#dce8f0; --margin:#e8a0a8; --ink:#2c3654; --pen-blue:#1a4b8c;
+  --def-bg:#e3f0fb; --def-bd:#1976d2;
+  --formula-bg:#fff8dc; --formula-bd:#e8a317;
+  --ex-bg:#e9f6ea; --ex-bd:#2e7d32;
+  --alert-bg:#fde7ee; --alert-bd:#c2185b;
+  --key-bg:#f2e8f9; --key-bd:#7b1fa2;
+  --read-bg:#e0f4f2; --read-bd:#00796b;
+  --hl-y:#fff176; --hl-p:#f8bbd0; --hl-g:#b9f6ca; --hl-b:#b3e5fc;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:#cfd8dc; font-family:'Kalam',cursive; color:var(--ink);
+  font-size:17px; line-height:1.65;
+}
+.notebook{
+  max-width:900px; margin:20px auto; background:var(--paper);
+  background-image:repeating-linear-gradient(transparent, transparent 31px, var(--line) 31px, var(--line) 32px);
+  box-shadow:0 4px 30px rgba(0,0,0,.35); border-radius:4px;
+  padding:40px 40px 60px 78px; position:relative;
+}
+.notebook::before{
+  content:''; position:absolute; top:0; bottom:0; left:58px; width:2px; background:var(--margin); opacity:.7;
+}
+h1,h2,h3,h4{font-family:'Caveat',cursive; color:var(--pen-blue); margin:1.2em 0 .4em;}
+h1{font-size:46px; line-height:1.1;}
+h2{font-size:36px; border-bottom:3px solid var(--pen-blue); display:inline-block; padding-bottom:2px; transform:rotate(-.4deg);}
+h3{font-size:29px; color:#8e2f5c;}
+h4{font-size:24px; color:#00695c;}
+p{margin:.5em 0;}
+mark{background:var(--hl-y); padding:0 4px; border-radius:3px;}
+mark.p{background:var(--hl-p);} mark.g{background:var(--hl-g);} mark.b{background:var(--hl-b);}
+strong{color:#b71c1c;}
+em{color:#4527a0;}
+ul,ol{margin:.4em 0 .8em; padding-left:26px;}
+li{margin:.35em 0;}
+.box{border-radius:10px; padding:14px 18px; margin:18px 0; border-left:7px solid; box-shadow:2px 3px 8px rgba(0,0,0,.08); position:relative;}
+.box .tag{font-family:'Caveat',cursive; font-size:22px; font-weight:700; display:block; margin-bottom:4px;}
+.def{background:var(--def-bg); border-color:var(--def-bd);} .def .tag{color:var(--def-bd);}
+.formula{background:var(--formula-bg); border-color:var(--formula-bd);} .formula .tag{color:#b8860b;}
+.example{background:var(--ex-bg); border-color:var(--ex-bd);} .example .tag{color:var(--ex-bd);}
+.alert{background:var(--alert-bg); border-color:var(--alert-bd);} .alert .tag{color:var(--alert-bd);}
+.keypt{background:var(--key-bg); border-color:var(--key-bd);} .keypt .tag{color:var(--key-bd);}
+.reading{background:var(--read-bg); border-color:var(--read-bd);} .reading .tag{color:var(--read-bd);}
+.eq{
+  font-family:'JetBrains Mono',monospace; font-size:16.5px; background:#fffdf5;
+  border:1.5px dashed var(--formula-bd); border-radius:8px; padding:10px 16px; margin:10px 0;
+  text-align:center; color:#5d4037; overflow-x:auto;
+}
+.frac{display:inline-block; vertical-align:middle; text-align:center; margin:0 4px;}
+.frac .top{display:block; border-bottom:1.6px solid #5d4037; padding:0 6px;}
+.frac .bot{display:block; padding:0 6px;}
+table{border-collapse:collapse; width:100%; margin:14px 0; background:#fffefa; font-size:15.5px;}
+th{background:#1a4b8c; color:#fff; font-family:'Caveat',cursive; font-size:21px; padding:7px 10px;}
+td{border:1.5px solid #90a4ae; padding:7px 10px; vertical-align:top;}
+tr:nth-child(even) td{background:#f4f8fb;}
+.sticky{
+  background:#fff59d; padding:14px 16px; margin:20px auto; max-width:520px;
+  box-shadow:3px 4px 10px rgba(0,0,0,.25); transform:rotate(-1.3deg);
+  font-size:16px; border-radius:2px;
+}
+.sticky.blue{background:#b3e5fc; transform:rotate(1.1deg);}
+.sticky b{font-family:'Caveat',cursive; font-size:22px;}
+.cover{text-align:center; padding:30px 0 10px; border-bottom:4px double var(--pen-blue); margin-bottom:26px;}
+.cover h1{font-size:58px; margin:.1em 0; transform:rotate(-1deg);}
+.cover .sub{font-family:'Caveat',cursive; font-size:28px; color:#8e2f5c;}
+.badge{display:inline-block; background:#1a4b8c; color:#fff; font-family:'Caveat',cursive; font-size:20px; padding:2px 16px; border-radius:20px; margin:4px;}
+.toc{background:#fffde7; border:2px dashed #9e9d24; border-radius:12px; padding:16px 24px; margin:20px 0;}
+.toc h3{margin-top:0;}
+.toc a{color:#1a4b8c; text-decoration:none; font-weight:700;}
+.toc a:hover{background:var(--hl-y);}
+.lesson-hd{
+  background:linear-gradient(135deg,#1a4b8c,#3f7cc0); color:#fff; border-radius:14px;
+  padding:14px 22px; margin:44px 0 18px; box-shadow:3px 5px 12px rgba(0,0,0,.25); transform:rotate(-.3deg);
+}
+.lesson-hd h2{color:#fff; border:none; margin:0; font-size:38px;}
+.lesson-hd .kw{font-size:15px; font-family:'Kalam',cursive; opacity:.92;}
+.split{display:flex; gap:16px; flex-wrap:wrap;}
+.split > div{flex:1 1 300px;}
+.doodle{font-size:14px; color:#78909c; font-style:italic;}
+.chk li::marker{content:'✓ '; color:#2e7d32;}
+.cross li::marker{content:'✗ '; color:#c62828;}
+@media(max-width:640px){.notebook{padding:24px 14px 40px 44px;} .notebook::before{left:30px;} h1{font-size:34px;} .cover h1{font-size:38px;}}
+@media print{body{background:#fff;} .notebook{box-shadow:none; margin:0; max-width:100%;}}
+</style>
+</head>
+<body>
+<div class="notebook">
+
+<!-- ================= COVER ================= -->
+<div class="cover">
+  <div class="sub">MScFE — Financial Markets ✦ Register Notes</div>
+  <h1>📈 MODULE 2 📉</h1>
+  <div class="sub">Stocks &amp; Cryptocurrencies</div>
+  <div>
+    <span class="badge">Lesson 1: Intro</span><span class="badge">Lesson 2: Types</span>
+    <span class="badge">Lesson 3: Measuring</span><span class="badge">Lesson 4: Modeling</span>
+    <span class="badge">+ Required Readings 📚</span>
+  </div>
+  <p class="doodle">"Compared to fixed income, stocks &amp; Bitcoin have more upside... aur zyada downside bhi!" ✍️</p>
+</div>
+
+<div class="toc">
+  <h3>🗂️ Index</h3>
+  <ol>
+    <li><a href="#l1">Lesson 1 — Introducing Stocks &amp; Cryptocurrencies</a></li>
+    <li><a href="#l2">Lesson 2 — Types of Stocks &amp; Cryptocurrencies</a></li>
+    <li><a href="#l3">Lesson 3 — Measuring Performance (Returns &amp; Volatility)</a></li>
+    <li><a href="#l4">Lesson 4 — Modeling Performance (Normality, Skew, Kurtosis)</a></li>
+    <li><a href="#r1">📖 Reading 1 — Stellinga et al., <em>Money &amp; Debt</em>, Ch. 1</a></li>
+    <li><a href="#r2">📖 Reading 2 — Kjærland et al., <em>Bitcoin's Price Dynamics</em>, §2</a></li>
+    <li><a href="#r3">📖 Reading 3 — Levenkron, <em>Art as an Alternative Investment</em></a></li>
+    <li><a href="#cheat">⚡ Quick Revision Sheet</a></li>
+  </ol>
+</div>
+
+<!-- ================= LESSON 1 ================= -->
+<div class="lesson-hd" id="l1">
+  <h2>Lesson 1 — Introducing Stocks &amp; Cryptocurrencies</h2>
+  <div class="kw">🔑 Keywords: Stock • Primary Market • Secondary Market • Capital Appreciation • Realized Gain/Loss • Going Public • Cryptocurrency</div>
+</div>
+
+<h3>1.1 Bonds ka drawback → Stocks ka strength</h3>
+<p><b>Bondholder recap:</b></p>
+<ul class="chk">
+  <li>Contractually <mark class="b">guaranteed fixed coupons</mark> at specified intervals till maturity (last coupon + principal together).</li>
+  <li>Default mein bondholders get paid <b>before</b> equity holders.</li>
+  <li>Principal returned = investment value (barring default).</li>
+</ul>
+<div class="alert"><span class="tag">⚠️ The Drawback</span>
+Payments are <b>FIXED</b> — company kitna bhi achha kare, bondholder ko <mark class="p">upside ka koi hissa nahi milta</mark>. Stocks exist to fix exactly this: <mark>participating in the company's upside is the strength of stocks.</mark></div>
+
+<div class="def"><span class="tag">📘 Definition — Stock</span>
+A security representing <b>fractional ownership</b> in a corporation. Stockholder (= shareholder) owns a fraction of the company + share of profits + <em>voting rights</em>. Earlier physical certificates; today digital. Another name: <mark class="b">Equities</mark> (because holders own the equity).</div>
+
+<div class="formula"><span class="tag">🧮 Fundamental Equation of Accounting</span>
+<div class="eq">Assets = Liabilities + Equity &nbsp;&nbsp;⟹&nbsp;&nbsp; <b>Equity = Assets − Liabilities</b></div>
+Greater assets / smaller liabilities ⟹ greater equity ⟹ stockholders effectively own more.</div>
+
+<p><b>Governance chain (representative democracy 🗳️):</b> Stockholders vote → <mark class="g">Board of Directors</mark> → selects CEO &amp; senior managers → staffing/ops decisions. Most holders own tiny fractions ⟹ negligible individual influence.</p>
+
+<p><b>2 ways to finance assets:</b> ① <em>Liabilities</em> (borrow / issue bonds) ② <em>Equity</em> (issue shares — can even be used to repay liabilities). Public companies sell shares via exchanges (NASDAQ, NYSE, FTSE…), investors trade via stockbrokers. Value rise is <b>not guaranteed</b> — can fall, ya bankruptcy mein wipe out.</p>
+
+<div class="keypt"><span class="tag">⭐ "Good company" checklist</span>
+Productive assets + well-controlled liabilities + good management + projects where revenue &gt; costs ⟹ greater valuation.</div>
+
+<h3>Types of Stocks (terminology yaad rakho!)</h3>
+<table>
+<tr><th>Type</th><th>Behaviour</th><th>Investor kyon buy karta hai</th></tr>
+<tr><td><b>Value stocks</b></td><td>Value stable in all market conditions, may slowly rise</td><td>Perceived <mark>undervalued</mark>; stable; often reliable dividends (not guaranteed)</td></tr>
+<tr><td><b>Growth stocks</b></td><td>More volatile; growth outpaces market average</td><td><mark class="g">Rapid price appreciation</mark>, not dividend income</td></tr>
+<tr><td><b>Income stocks</b></td><td>Regular steady dividends, low risk/volatility, limited growth</td><td>Dividend yield <b>above 10-yr Treasury note coupon rate</b>; bolster fixed-income portfolios (bond-like)</td></tr>
+<tr><td><b>Dividend aristocrats</b></td><td>S&amp;P 500 firms that <mark class="p">increased dividends annually for 25 straight years</mark></td><td>Low volatility; earn 2 ways — price appreciation + dividend appreciation. Rare: only ~68 of ~6,000 listed (May 2024)</td></tr>
+</table>
+
+<h3>Buying a stock — 2 markets</h3>
+<div class="split">
+<div class="def"><span class="tag">📘 Primary Market</span>
+Buy directly from issuer at issuance = at the <b>IPO</b>. IPO is <mark class="b">underwritten by investment banks / broker-dealers</mark> — they buy from the company &amp; resell in large blocks ⟹ shares mostly go to <b>large institutional investors</b> (faster/efficient for bankers) — small investors ke liye difficult.</div>
+<div class="def"><span class="tag">📘 Secondary Market</span>
+Already-issued shares trade on exchanges. Buy = accept owner's offer price; sell = find willing buyer. Heavy trading ⟹ firm's shares seen as <mark>marketable &amp; liquid</mark> — company ke liye good thing.</div>
+</div>
+
+<h3>1.2 Benefits of Stocks (investor side) — 6 points</h3>
+<ol>
+<li><b>Capital Appreciation</b> 💰 — "buy low, sell high"; profit = price difference on sale. Buy undervalued → hold → sell higher = essence of <em>value trading</em>. (Ghar bechne wali feeling jab price badh gaya ho!)</li>
+<li><b>Dividend Payments</b> — from profits, company either (a) pays dividends proportional to shares, or (b) <mark class="b">retains earnings</mark> for projects/acquisitions that build long-term value.</li>
+<li><b>Voting Rights</b> — more shares = more votes → board → executives. Daily operations pe voice nahi.</li>
+<li><b>Ease of Trading</b> — price publicly known, tradable at/near it during exchange hours (~5 days/week). Easy cash conversion. Contrast: <em>art, real estate</em> — no exchange, valuation hard.</li>
+<li><b>Extra Income via Securities Lending</b> — lend your shares to short sellers via broker; borrower pays a <mark>financing cost ("daily rent")</mark>. You keep dividends + financing income until short is covered; can still sell meanwhile.</li>
+<li><b>Centralized Depositories</b> — exchanges + clearing houses + custodians keep exact ownership records ⟹ virtually no mix-ups. Contrast real estate: deeds at thousands of local offices; duplicate title claims possible ⟹ isliye <em>title insurance</em> exist karta hai. (Note: benefit of exchanges/clearing, not stocks per se.)</li>
+</ol>
+
+<h4>Company side — raising capital</h4>
+<div class="split">
+<div class="alert"><span class="tag">Issue Bonds 😰</span>
+Raise whatever market supplies, BUT cash-flow obligations start at <b>first coupon date</b>. Funds tied in long-term infra ⟹ <mark class="p">default possible as early as the first interest payment</mark>. Timing &amp; size of obligations matter.</div>
+<div class="example"><span class="tag">Issue Stocks 😎</span>
+Cede ownership to public — <mark class="g">money NEVER has to be paid back</mark>. IPO price set by underwriting bank. Safer for long growth cycles (no coupons). Growth phase = no dividends expected. This is <b>"going public"</b> — dilutes founders' % by granting ownership to buyers.</div>
+</div>
+
+<h3>1.3 Disadvantages of Stocks</h3>
+<ul class="cross">
+<li><b>Capital depreciation</b> — holding par loss sirf <em>on paper</em>; sell at lower price ⟹ <mark class="p">REALIZED loss</mark>. (Key exam term!)</li>
+<li><b>Dividends may not occur</b> — no income, or earnings retained instead.</li>
+<li><b>Voting power negligible</b>; few/single big holders can control. <b>Activist investors</b> (e.g., Bill Ackman) buy big stakes → pressure management to "shape up or ship out" → adds volatility &amp; uncertainty.</li>
+<li><b>Market ≠ 24/7</b> — bad news while closed ⟹ can't sell for 1–3 days (weekends/holidays) ⟹ risk.</li>
+</ul>
+<div class="keypt"><span class="tag">⭐ Bankruptcy payout order (ratta maar lo)</span>
+<div class="eq">Secured creditors (incl. <b>bondholders</b>) → Employees → Tax agencies → Environmental claims → Preferred stockholders → <b>Common stockholders (LAST)</b></div></div>
+<p><b>Company side:</b> issuing stock ⟹ possible <mark class="p">loss of control</mark>. Ford example: family held large voting block (~40% voting power over board). Agar activist ne itne shares le liye ki family control kho de → new board → poor leadership risk. Bonds avoid ownership disruption.</p>
+
+<h3>1.4 How to Value a Stock</h3>
+<p>Capital appreciation judge karne ke liye <b>fair value</b> chahiye. Techniques (corporate-finance rooted):</p>
+<ul>
+<li><b>DCF</b> — very general, needs deep company knowledge ⟹ outsiders ke bas ka nahi.</li>
+<li><b>Relative valuation</b> &amp; <b>Dividend Discount Models (DDM)</b> — accessible.</li>
+<li><b>Gordon Growth Model</b> — simple yet powerful, no specialized business knowledge needed. ⭐</li>
+</ul>
+
+<h4>1.4.1 Gordon Growth Model (GGM)</h4>
+<div class="def"><span class="tag">📘 Idea</span>
+Present price = sum of <b>all future dividends</b> discounted to today, growing at constant rate <b>in perpetuity</b> (forever). Computed price = <mark>fair value</mark>. Based on time value of money.</div>
+<div class="formula"><span class="tag">🧮 GGM Formula</span>
+<div class="eq">P₀ = <span class="frac"><span class="top">D₁</span><span class="bot">r − g</span></span>
+&nbsp;&nbsp;where&nbsp;&nbsp; D₁ = D₀(1 + g), &nbsp; and must have <b>r &gt; g</b></div>
+<b>Inputs (only 3):</b> D₁ = expected next dividend; g = dividend growth rate; r = cost of equity capital (market's compensation for risk).<br>
+<em>Derivation sketch:</em> P₀ = Σ D₁(1+g)<sup>t−1</sup>/(1+r)<sup>t</sup> — geometric series, ratio (1+g)/(1+r) &lt; 1 ⟹ sums to D₁/(r−g).</div>
+<div class="keypt"><span class="tag">⭐ Decision Rule</span>
+Market price <b>&lt;</b> GGM value ⟹ <mark class="g">undervalued → BUY</mark> &nbsp;|&nbsp; Market price <b>&gt;</b> GGM value ⟹ <mark class="p">overvalued → SELL / short</mark></div>
+
+<div class="example"><span class="tag">✏️ Solved Example 1</span>
+ABC: D₁ = $1.50, g = 2%, r = 8%. Current price $30.
+<div class="eq">P₀ = 1.50 / (0.08 − 0.02) = 1.50 / 0.06 = <b>$25.00</b></div>
+Fair $25 &lt; market $30 ⟹ <b>overvalued ⟹ SELL</b>.</div>
+
+<div class="example"><span class="tag">✏️ Solved Example 2 (trap! D₀ vs D₁)</span>
+ABC <em>just paid</em> D₀ = $1.40; g = 2.2%; r = 8%. Formula needs D₁:
+<div class="eq">D₁ = 1.40 × 1.022 = 1.4308 &nbsp;⟹&nbsp; P₀ = 1.4308 / (0.08 − 0.022) = 1.4308 / 0.058 ≈ <b>$24.67</b></div></div>
+<div class="alert"><span class="tag">⚠️ Exam Alert</span>
+"<b>expected to pay</b>" ⟹ D₁ directly &nbsp;•&nbsp; "<b>just paid</b>" ⟹ pehle ×(1+g) karo! Ye classic quiz trap hai.</div>
+
+<p><b>GGM disadvantages (5):</b></p>
+<ol class="cross">
+<li>Needs dividend-paying company — stable/mature firms OK; <mark class="p">start-ups ke liye unreliable/inapplicable</mark>.</li>
+<li>Constant g mostly fits mature firms; growth firms ki growth volatile.</li>
+<li>Assumes company exists forever, pays &amp; grows dividends forever.</li>
+<li>Mathematically needs r &gt; g.</li>
+<li>External market conditions ignored.</li>
+</ol>
+
+<h4>1.4.2 Multistage GGM (mGGM)</h4>
+<p>Fast-growth period + stable-growth period (young = fast, mature = slow &amp; stable). <b>Inputs:</b> D₁ (or D₀), fast rate g<sub>f</sub>, high-growth years n, stable rate g<sub>s</sub>, r.</p>
+<div class="formula"><span class="tag">🧮 2-stage formula</span>
+<div class="eq">P₀ = Σ<sub>t=1..n</sub> <span class="frac"><span class="top">D₀(1+g<sub>f</sub>)<sup>t</sup></span><span class="bot">(1+r)<sup>t</sup></span></span> + <span class="frac"><span class="top">D₀(1+g<sub>f</sub>)<sup>n</sup>(1+g<sub>s</sub>)</span><span class="bot">(r − g<sub>s</sub>)</span></span> × <span class="frac"><span class="top">1</span><span class="bot">(1+r)<sup>n</sup></span></span></div>
+= PV of explicit dividends + PV of terminal Gordon value. Spreadsheet mein easy; extends to N stages.</div>
+
+<h4>1.4.3 H-Model (linearly declining growth)</h4>
+<p>3 stages: ① high growth g<sub>H</sub> (1 period) ② growth declines <em>linearly</em> g<sub>H</sub> → g<sub>L</sub> over 2H periods ③ perpetuity at g<sub>L</sub>.</p>
+<div class="formula"><span class="tag">🧮 Closed form</span>
+<div class="eq">P₀ = <span class="frac"><span class="top">D₀(1 + g<sub>L</sub>) + D₀ · H · (g<sub>H</sub> − g<sub>L</sub>)</span><span class="bot">r − g<sub>L</sub></span></span>
+&nbsp;&nbsp; H = (decline years) ÷ 2 &nbsp;(= half-life)</div></div>
+<div class="example"><span class="tag">✏️ Solved Example — STU</span>
+Price $34; r = 9.5%; D₀ = $1.85; g<sub>H</sub> = 7%; g<sub>L</sub> = 3%; decline over 10 yrs ⟹ H = 5.
+<div class="eq">P₀ = [1.85(1.03) + 1.85 × 5 × 0.04] / 0.065 = [1.9055 + 0.37] / 0.065 ≈ <b>$35.01</b></div>
+$35.01 &gt; $34 ⟹ <mark class="g">mildly undervalued</mark>.</div>
+
+<h4>1.4.4 True Multistage H-Model</h4>
+<p>Stage 1 high growth ab <b>n periods</b> tak (sirf 1 nahi) → linear decline → perpetuity. Formula cumbersome ⟹ <mark>spreadsheet use karo</mark> (project each dividend, discount, add terminal value).</p>
+<div class="example"><span class="tag">✏️ Solved Example — PQR</span>
+Price $27.14; D₀ = $0.55; 10% growth × 5 yrs, then linear decline to 5% over 10 yrs; r = 8.5% (CAPM). Spreadsheet ⟹ fair value <b>$24.75</b> ⟹ market <mark class="p">overvalued by ≈ 9.6%</mark> (27.14/24.75 − 1).</div>
+
+<h3>1.5 Stocks vs Bonds</h3>
+<table>
+<tr><th>Aspect</th><th>Bond buyer 🏦</th><th>Stock buyer 📈</th></tr>
+<tr><td>Nature</td><td>Loan with repayment (maturity) date</td><td>"Loan" with <b>no repayment date</b> — buys ownership directly</td></tr>
+<tr><td>Payments</td><td>Fixed coupons at fixed times + principal</td><td>Dividends only if <mark>solvent AND profitable AND board decides</mark></td></tr>
+<tr><td>Bankruptcy</td><td>Paid first</td><td>Paid last</td></tr>
+<tr><td>Risk</td><td>Safer (needs only solvency)</td><td>Riskier, no guarantees ⟹ more volatile</td></tr>
+<tr><td>Upside</td><td>Limited to yield</td><td>Unlimited — company must create <em>perception</em> (real ho ya na ho) of greater value</td></tr>
+</table>
+
+<div class="example"><span class="tag">✏️ Big Solved Example — Cindy's total return</span>
+Cindy buys <b>100 shares of ABC @ $12.44</b>. Over 1 yr, ABC pays <b>4 dividends of $0.60</b>/share; right after the 4th dividend she sells all @ <b>$15.13</b>. Dividends NOT reinvested (she spends them).<br><br>
+<b>Cash-flow scheme:</b>
+<ul>
+<li>t = 0: −100 × 12.44 = <b>−$1,244</b></li>
+<li>t = ¼, ½, ¾, 1: +$60 each (100 × 0.60) ⟹ total <b>+$240</b></li>
+<li>t = 1: sale +100 × 15.13 = <b>+$1,513</b> (commissions ignored)</li>
+</ul>
+<div class="eq">R = (1513 + 240 − 1244) / 1244 = 509 / 1244 ≈ <b>40.9%</b> 🎉</div>
+Split-up: Dividend yield = 2.40/12.44 = <b>19.29%</b> &nbsp;+&nbsp; Capital appreciation = 1513/1244 − 1 = <b>21.62%</b></div>
+
+<h3>2. Cryptocurrency 🪙</h3>
+<div class="keypt"><span class="tag">⭐ Timeline (dates yaad rakho)</span>
+<b>1991</b> — Haber &amp; Stornetta: blockchain technique → <b>2002</b> — Back: <em>proof of work</em> → <b>2008</b> — <mark>Satoshi Nakamoto combines these → Bitcoin</mark> (launched as world entered the Great Recession). &nbsp; <b>2015</b> — Vitalik Buterin: Ethereum.</div>
+
+<div class="def"><span class="tag">📘 Ledger</span>
+A (possibly digital) book of bookkeeping entries summarizing ALL of a company's financial transactions over a period — a <em>master document</em>.</div>
+<div class="def"><span class="tag">📘 Blockchain</span>
+A <mark>shared and immutable ledger</mark> that records transactions &amp; tracks assets = <b>distributed ledger technology / distributed database</b>. Traditional: central authority controls the DB. Nakamoto: single distributed DB <mark class="g">accessible to everyone, controlled by no one, permissionless</mark>. Sab agree on DB state ⟹ all copies sync ⟹ saves time &amp; usually cost.</div>
+<p class="doodle">Figure 1 concept: Decentralization is a SPECTRUM — permissioned centralized (few big nodes) → node significance becomes uniform → permissionless decentralized (fully "Decentralized" endpoint = more conceptual than practical).</p>
+
+<div class="formula"><span class="tag">🧮 7 Blockchain properties (permissionless ledger ke challenges ka solution)</span>
+<ol>
+<li>All nodes hold a copy of the same ledger</li>
+<li>Accepted ledger = <b>immutable</b>; validated transactions irreversible</li>
+<li>Transactions <b>time-stamped</b> (no double-adding)</li>
+<li>All nodes agree on validity of each block + whole chain (<b>consensus</b>)</li>
+<li>Participants <b>anonymous</b></li>
+<li>Everything <b>encrypted</b></li>
+<li><b>Programmable</b> (needed for smart contracts)</li>
+</ol></div>
+
+<h4>How Bitcoin works ⚙️</h4>
+<p>Bitcoin's blockchain = shared history of <em>every</em> BTC transaction; copies on network computers = <b>nodes</b>. Nodes validate transactions (payer ke paas coins hain?). Valid transactions → <b>blocks</b> → appended to chain. Node owners = <b>miners</b>; adding a block earns a <mark class="g">bitcoin reward</mark> — yahi se naye BTC bante hain!</p>
+
+<div class="keypt"><span class="tag">⭐ Security = 2 protections</span>
+① <b>Hash</b> — cryptographic fingerprint per block; costly to generate (computing + energy) ⟹ <mark>proof-of-work</mark>; then acts as a seal; verifying is easy. ② <b>Consensus protocol</b> — nodes agree on shared history, then update copies.<br><br>
+Hashes also <b>link</b> the chain (each block contains previous block's hash). To alter an old entry: recompute that hash + <em>every later block's hash</em>, FASTER than the network adds new blocks ⟹ needs more power than <b>all other nodes combined</b> — warna conflict → alteration <mark class="p">rejected</mark>. Hard to attack, but <em>not completely unbreakable</em>.</div>
+
+<h4>Ethereum &amp; Smart Contracts</h4>
+<ul>
+<li><b>Ethereum</b> (2015, Vitalik Buterin) — decentralized blockchain running <mark>smart contracts</mark>: programs that create/transform data or tokens on the chain; control assets/data; define transactions ⟹ basis of <b>DeFi</b>. Native currency: <b>Ether (ETH)</b>.</li>
+<li><b>ERC standards:</b> <mark class="b">ERC-20 = fungible</mark> (1 EUR ≡ 1 EUR) &nbsp;•&nbsp; <mark class="p">ERC-721 = non-fungible</mark> (token tied to a particular asset).</li>
+<li><b>Consensus:</b> Bitcoin = <b>proof-of-work</b> vs Ethereum = <b>proof-of-stake</b> (any ETH holder can secure the network &amp; earn rewards by batching transactions + checking other validators).</li>
+<li><b>dApps</b> — permissionless decentralized applications, no central controller; governed by a <b>DAO</b> (Decentralized Autonomous Organization) with rules encoded in smart contracts.</li>
+<li><b>Wallets</b> — apps giving control over accounts (identity, balances, send transactions) = tools for interacting with Ethereum accounts.</li>
+</ul>
+<div class="def"><span class="tag">📘 Oracle</span>
+Bridge between blockchain aur <b>external world</b> — brings off-chain data on-chain (chain only knows on-chain events). Example: soccer-betting dApp needs the true result; malicious actors want to feed false data. <b>Types:</b> centralized, decentralized, consensus-based, human-based — tradeoff: safety vs ease vs simplicity vs cost.</div>
+<p>Other cryptos: Tether, Solana, Litecoin, Bitcoin Cash, BNB, Dogecoin… Exchanges: e.g., Coinbase. BTC price can move substantially in a day; smaller coins even more volatile.</p>
+<div class="sticky"><b>💡 Why crypto appeals:</b> stock selection daunting; good company mil bhi jaye toh price already high; shorting stock = <b>UNLIMITED potential loss</b> (price rise without bound) ⟹ kuch investors ek alag asset class hi chun lete hain. Crypto: transcends borders, no central authority — trust in institutions replaced by "objective, rational, incorruptible mathematical calculations" (Stellinga et al.).</div>
+
+<h4>2.1 Crypto Benefits (3)</h4>
+<ol class="chk">
+<li><b>Extreme returns</b> — stocks se kahin zyada volatility; market timing aati hai toh attractive.</li>
+<li><b>Exponential growth</b> — ~20 yrs pehle exist nahi karte the; ab ≥10,000 active; total <b>$1–2 trillion</b>.</li>
+<li><b>24/7 trading</b> — no physical exchange/closing hours; react to news instantly. <mark>Peloton example:</mark> short into weekend → takeover news → Monday open +30% → short seller loses 30%. Crypto-style round-the-clock access would've prevented it.</li>
+</ol>
+
+<h4>2.2 Crypto Disadvantages</h4>
+<ul class="cross">
+<li><b>No dividends ⟹ stock-valuation mechanism (DDM etc.) apply nahi hota</b> — value samajhna hard.</li>
+<li>Famous skeptics 🗣️: <b>Warren Buffett</b> — Bitcoin "probably rat poison squared", a gambling instrument; <b>Nassim Taleb (2021)</b> — worth zero, fails as hedge; <b>Jamie Dimon</b> — no intrinsic value, "you are basically buying a token".</li>
+<li>Only way to profit: <mark class="p">someone else later believes it's worth more</mark> (→ Greater Fool, Lesson 2). Stocks = companies making products/services; crypto = implied value recognized by holders.</li>
+<li>Distinguish from real-world currencies = <b>FX (foreign exchange)</b> (e.g., GBP/JPY).</li>
+</ul>
+
+<h4>2.3 Bitcoin vs Bonds — return spectrum ke 2 ends</h4>
+<div class="split">
+<div class="def"><span class="tag">🏦 Risk-free bonds</span>
+Most conservative; principal + interest virtually guaranteed if issuer solvent. Held to maturity ⟹ earn <b>YTM</b>; bought at par ⟹ YTM = coupon rate. Returns modest (small fraction of principal).</div>
+<div class="alert"><span class="tag">🪙 Bitcoin</span>
+Little/no intrinsic value (no products/services). Value-add: publicly distributed ledger for many applications — but value <em>subjective</em>. $0 → tens of thousands (projected ~$100,000 while notes were written). +50% to +1000s% possible… <mark class="p">par 90% lose karna equally easy</mark>; 40–50% corrections common. Athletes paid in BTC sometimes found much smaller amounts at withdrawal time.</div>
+</div>
+
+<!-- ================= LESSON 2 ================= -->
+<div class="lesson-hd" id="l2">
+  <h2>Lesson 2 — Types of Stocks &amp; Cryptocurrencies</h2>
+  <div class="kw">🔑 Keywords: Capitalization • Dilution • Private Equity • Price Dynamics • Alternative Investments • Commodities • Art</div>
+</div>
+
+<h3>1. Large Cap vs Small Cap</h3>
+<div class="formula"><span class="tag">🧮 Market Capitalization</span>
+<div class="eq"><b>Market Cap = (Shares Outstanding) × (Share Price)</b></div>
+Shares mostly created at IPO; more can be issued later. Company ke apne repurchased shares = <mark class="b">treasury stock</mark>. All shares together = 100% ownership (bonds/options ≠ ownership!).</div>
+<ul>
+<li><b>Merger example:</b> A buys B @ 1.2 A-shares per B-share ⟹ A issues new shares and/or uses treasury stock.</li>
+<li><b>Dilution:</b> new shares water down existing owners' % (1M shares → +1M more ⟹ originals halved). Existing holders often get <mark>antidilution provisions</mark> (maintain proportion — at a cost).</li>
+<li>Shares ≈ fixed; <b>price changes intraday</b> (exchanges publish price + volume). <b>Takeover</b> buyer needs ≈ shares × price <b>+ premium ~30%+</b> (holders sense the ambition) <b>+ net debt</b>.</li>
+</ul>
+<div class="example"><span class="tag">✏️ Share Split</span>
+1,000,000 shares @ $40 = $40M cap → <b>2-for-1 split</b> → 2,000,000 @ $20. <mark class="g">Market cap UNCHANGED</mark>; stock more affordable (round lot of 100: $2,000 vs $4,000) ⟹ easier trading. Reverse splits bhi hote hain.</div>
+<table>
+<tr><th>Category</th><th>Market Cap</th></tr>
+<tr><td><b>Large cap</b> ("blue chips" — poker ka most expensive chip!)</td><td>$10 billion +</td></tr>
+<tr><td><b>Mid cap</b></td><td>$2 – 10 billion</td></tr>
+<tr><td><b>Small cap</b></td><td>$0.3 – 2 billion</td></tr>
+<tr><td><b>Micro cap</b></td><td>up to $300 million</td></tr>
+</table>
+<div class="keypt"><span class="tag">⭐ Facts</span>
+Large caps: established, do well in good AND poor economies — Microsoft, Apple, Amazon, Alphabet, Meta; older: Visa, Mastercard, J&amp;J. <mark>2018: Apple = first ever $1 trillion market cap.</mark> Safer: experienced management, existing revenue lines, market share. Small caps: usually newer. <mark class="b">Apple's 1980 IPO cap: $1.8 billion</mark> (us zamane ke thresholds se mid-cap).</div>
+
+<h3>2. Growth vs Income Stocks</h3>
+<div class="split">
+<div class="def"><span class="tag">📘 Growth stock</span>
+Income → <b>retained earnings</b> to grow competitiveness: better products, new products, geographic expansion, new markets. No dividends ⟹ valuation hard; long-term capital-gain play. <mark>Microsoft: IPO 1986, first dividend 2003</mark> — growth till 2003, phir income stock. <em>Companies change categories as they evolve!</em></div>
+<div class="def"><span class="tag">📘 Income stock</span>
+Expected to pay dividends; has a historical <b>dividend yield</b> ($200 stock, $10/yr div = <b>5% yield</b>). Usually quarterly, based on earnings + industry peers. <mark class="p">Dividend skip ⟹ swift &amp; potentially extreme reaction</mark> — sharp price fall + negative sentiment.</div>
+</div>
+<p>vs bonds: income stocks look "fixed-income-like", par <b>no guaranteed amount/date</b> — bonds mein "fixed" = (default-barring) guarantee.</p>
+
+<h3>3. Domestic vs Foreign Stocks</h3>
+<p><b>Domestic</b> = company investor ke apne country mein domiciled (same economy, same currency); <b>foreign</b> = other countries. Foreign kyon rakhein? Exposure to other economies/markets/currencies — supply &amp; demand local hote hain: ek sector ghar pe gire, videsh mein chadh sakta hai.</p>
+<div class="example"><span class="tag">✏️ FX kicker</span>
+Foreign stock flat, par home currency foreign ke against <b>10% weak</b> ho gayi ⟹ convert back karne par looks like <mark class="g">+10% return</mark> — capital appreciation from <em>foreign exchange</em>, not equity! International PMs pick countries via equity forecasts <b>AND</b> FX-rate models.</div>
+
+<h3>4. Private Equity vs Public Equity</h3>
+<div class="split">
+<div class="def"><span class="tag">📘 Public equity</span>
+Shares available to anyone on the exchange. Issuing shares publicly = <b>"going public"</b>. Zuckerberg: Facebook IPO day pe wealth billions badh gayi; public listing ⟹ net worth easy to value.</div>
+<div class="def"><span class="tag">📘 Private equity</span>
+Shares issued <em>without</em> a public IPO. Advantages: <mark>fewer regulatory requirements</mark> (investors = high-net-worth individuals/businesses); few investors ⟹ easier management control; later public offering = early investors "ground floor" upside. <b>The Carlyle Group</b> stays private ⟹ no activist/hostile purchases; no quarterly-earnings/buyout pressures.</div>
+</div>
+
+<h3>5. Bitcoin — categories of crypto</h3>
+<p>"Do you like crypto?" = "Do you like jazz?" — too broad! (Stocks mein bhi: blue chips vs <b>penny stocks</b> — pennies mein priced, 1000%+ possible, 100% loss bhi possible.)</p>
+<div class="keypt"><span class="tag">⭐ Numbers + THE classification</span>
+Bitcoin ≈ <b>$800 billion ≈ 40%</b> of ~$2 trillion crypto class (as written). #2 = <b>Ethereum</b>. No domestic/foreign classification (borders transcend; 24/7; "the Bitcoin exchange never closes").<br><br>
+<mark class="b">Coins</mark> = built directly into their own blockchain (Bitcoin) &nbsp;vs&nbsp; <mark class="p">Tokens</mark> = built on top of an existing blockchain (Ethereum tokens).</div>
+
+<h3>6. Bitcoin vs Stocks</h3>
+<ul>
+<li>Stocks = <b>intrinsic value</b> (ownership of firms making goods/services). Crypto = currency with <mark>implied value through mutual trust</mark>.</li>
+<li>Required reading (Stellinga Box 1.2): money ke <b>3 criteria</b> — Bitcoin does <b>NOT</b> fulfil them (details reading notes mein 👇).</li>
+<li>BTC nearly impossible to <b>counterfeit</b> (creation protocols) — par <mark class="p">steal ho sakta hai</mark> (digital account access).</li>
+<li><b>Greater Fool Theory:</b> paisa tabhi banta hai jab koi aur convince ho ki ye aur zyada worth hai &amp; premium de. (Kjærland §2 notes 👇)</li>
+</ul>
+
+<h3>7. Bitcoin vs Other Alternative Investments</h3>
+<div class="def"><span class="tag">📘 Alternative investments</span>
+Investments OUTSIDE mainstream equities / fixed income / traditional classes.</div>
+<ol>
+<li><b>Private equity</b> — long holds, build companies without quarterly whims/public-stockholder distraction; for high-net-worth folks who can forgo dividends &amp; absorb capital depreciation.</li>
+<li><b>Real estate</b> — homes, undeveloped land (later module: residential + commercial).</li>
+<li><b>Commodities</b> — agricultural, financial, natural-resource products. CFTC definition: agricultural goods (<mark>EXCEPT onions 🧅 — futures banned by law!</mark>), physical goods (gold, aluminium), natural resources (energy, oil, electricity), financial instruments (currency, interest rate). Supply/demand easily rattled by extreme weather, geopolitics, overproduction, pandemics ⟹ worldwide price effects.</li>
+<li><b>Art 🎨</b> — no periodic cash flows; intriguing for finding "value artists" who appreciate over time. (Levenkron notes 👇)</li>
+</ol>
+
+<h3>8. Bitcoin vs Other Cryptos + Moats</h3>
+<ul>
+<li>Bitcoin dominates headlines daily. <b>Demographics (CNBC, Robert Frank):</b> most millennial millionaires store wealth in crypto; <mark>83% of millennial millionaires own crypto</mark>.</li>
+<li>BTC trading = stock investing "fast-forwarded" (month ki volatility ek din mein); market open <b>&gt;3× stock-market hours</b>; ~<b>20 social-media mentions/minute</b> (Bulao).</li>
+<li>Since launch (~15 yrs): <b>&gt;15,000 cryptos created, ~10,000 active</b>. <mark class="g">Dogecoin — joke se shuru (founder's dog image) → $18 billion market cap!</mark></li>
+</ul>
+<div class="def"><span class="tag">📘 Competitive Moat 🏰</span>
+Medieval castle ke chaaron taraf paani = moat. Business mein: protection that new entrants <b>can't easily breach</b>. Crypto ka barrier sirf blockchain tech = LOW ⟹ isliye 10,000 coins.</div>
+<div class="split">
+<div class="alert"><span class="tag">✗ No moat — Peloton case</span>
+First in-home smart-tablet bike + live/recorded classes; pandemic highs (social distancing). Entrants copied: apps (<b>Zwift</b>), bikes (<b>Echelon</b>), combos — lower upfront + subscription costs ⟹ Peloton slashed prices → still lost customers → <mark class="p">ceased bike production</mark> (as written). Edge protect nahi ho paya.</div>
+<div class="example"><span class="tag">✓ Strong moat — Verizon</span>
+Fiber service = physical towers: land purchase + tech implementation + servicing ⟹ <mark class="g">very high barriers</mark> (cost, land access, infrastructure).</div>
+</div>
+<div class="sticky blue"><b>📌 Bottom line:</b> crypto is hard to trade/model — data volume + market newness + <b>no traditional valuation methods</b> (unlike equities/fixed income) ⟹ statistics chahiye → Lesson 3!</div>
+
+<!-- ================= LESSON 3 ================= -->
+<div class="lesson-hd" id="l3">
+  <h2>Lesson 3 — Measuring Performance</h2>
+  <div class="kw">🔑 Keywords: Percent Return • Log Return • Holding Period Return • Price Range • Standard Deviation • Variance • Coefficient of Variation • Sharpe Ratio</div>
+</div>
+
+<h3>1.1 Arithmetic (Percent) Returns</h3>
+<div class="formula"><span class="tag">🧮 Basic + Total Return</span>
+Buy @ P₁ (time t₁), sell @ P₂ (time t₂):
+<div class="eq">R = <span class="frac"><span class="top">P₂ − P₁</span><span class="bot">P₁</span></span> &nbsp;&nbsp;(no dividend)&nbsp;&nbsp;|&nbsp;&nbsp; R = <span class="frac"><span class="top">P₂ − P₁ + D</span><span class="bot">P₁</span></span> &nbsp;&nbsp;(dividend D paid in (t₁, t₂])</div>
+Dollar total return = P₂ − P₁ + D. Commissions/fees technically included, par small ⟹ ignore. No dividend ⟹ "return" = "total return".</div>
+
+<h3>1.2 Logarithmic Returns</h3>
+<div class="formula"><span class="tag">🧮 Log Return</span>
+<div class="eq">R̃ = ln(P₂ / P₁) &nbsp;&nbsp;•&nbsp;&nbsp; with dividend: R̃ = ln((P₂ + D)/P₁)</div>
+Tilde (~) distinguishes log from arithmetic. Dono similar but NOT same.</div>
+<div class="example"><span class="tag">✏️ Solved Example</span>
+Bought 2 Jan 2024 @ $125; 28 Feb 2024 worth $153.
+<div class="eq">Arithmetic: (153−125)/125 = <b>22.4%</b> &nbsp;&nbsp;vs&nbsp;&nbsp; Log: ln(153/125) = ln(1.224) ≈ <b>20.21%</b></div></div>
+
+<h3>1.3 Log ya Arithmetic? (Derivation — exam favourite!)</h3>
+<p>Invest V₀; arithmetic returns R₁,…,R_T over subperiods.</p>
+<div class="formula"><span class="tag">🧮 Continuous compounding (gains reinvested)</span>
+<div class="eq">V_T = V₀(1+R₁)(1+R₂)···(1+R_T) &nbsp;⟹&nbsp; 1 + R₀,T = Π(1+Rₜ)</div>
+Log dono taraf lo:
+<div class="eq">ln(1+R₀,T) = Σₜ ln(1+Rₜ) &nbsp;&nbsp;and&nbsp;&nbsp; ln(1+Rₜ) = ln(Pₜ/Pₜ₋₁) = R̃ₜ</div>
+<div class="eq">⭐ <b>R̃₀,T = R̃₁ + R̃₂ + ··· + R̃_T</b> — total log return = SUM of subperiod log returns!</div></div>
+<div class="keypt"><span class="tag">⭐ Why log returns win</span>
+① <mark>ADDITIVITY</mark> (upar wala property) &nbsp;② Prices log-normal ⟹ <mark class="b">returns normal</mark> — key for quant models (Derivative Pricing course). &nbsp;③ Small returns: ln(1+x) ≈ x ⟹ log ≈ arithmetic.</div>
+<div class="def"><span class="tag">📘 Rebalancing version</span>
+Har subperiod start pe wapas V₀ (profit nikaal lo / loss top-up karo):
+<div class="eq">R*₀,T = R₁ + R₂ + ··· + R_T &nbsp;&nbsp;(simple sum, no compounding)</div>
+Alag symbol R* kyunki computation alag hai.</div>
+
+<h3>2. Time-Specific Returns</h3>
+<ul>
+<li>Daily closes se: daily, weekly (Fri→Fri; koi bhi weekday chalega), monthly (last trading day), quarterly (Mar 31/Jun 30/Sep 30/Dec 31), annual (Dec 31 → Dec 31).</li>
+<li><mark class="p">⚠️ Lengthen kar sakte ho, shorten nahi</mark> — monthly data se weekly/daily returns impossible.</li>
+<li>Weekends/holidays: providers Sat/Sun ko Friday price se fill karte hain ⟹ daily data ki <mark>volatility artificially kam</mark> lag sakti hai (weekly/monthly mein less issue). <b>Crypto 24/7 trade karta hai</b> ⟹ ye gap nahi — stocks + crypto mix karte waqt data availability ka dhyaan!</li>
+<li><b>n prices ⟹ n−1 daily returns</b> (day 1 ke return ke liye ek aur pehle ka price chahiye). Weekly from n daily prices ⟹ ~n/5 returns. Models ko bahut data points chahiye; yearly returns = very long histories (jisme underlying models change ho chuke ho sakte hain).</li>
+</ul>
+
+<h4>Annualizing ⏱️</h4>
+<div class="example"><span class="tag">✏️ Example</span>
+$100,000 (1 Jul) → $110,000 (31 Dec): 6-month return 10%. 12/6 = 2 periods/yr ⟹ annualized ≈ <b>20%</b> (simple extrapolation).</div>
+<div class="alert"><span class="tag">⚠️ Annualization ka dhoka</span>
+$2 → $2.20 in ONE day = 10%/day ⟹ "3650% annualized — Warren Buffett who?" 🤡 Absurd: repeat nahi hoga; kal $1.95 bhi ho sakta hai. <b>Actual annual return</b> (points truly 1 yr apart) ≠ <b>annualized</b> (extrapolated).<br><br>
+<mark>GIPS (Global Investment Performance Standards)</mark>: extrapolated annualized returns present karna FORBIDDEN — partial-year ko partial-year hi dikhao. Funds ke "sirf best years report" karne wale trick se bhi bachke!</div>
+<div class="example"><span class="tag">✏️ De-annualization</span>
+Firm starts 1 Nov 2023; 2-month return 4% ⟹ annualized 26.53% (compound). Non-GIPS firm 26.53% advertise kare toh savvy investor:
+<div class="eq">(1 + 0.2653)^(2/12) − 1 = 1.2653^(1/6) − 1 ≈ <b>4%</b> ✓ actual 2-month performance</div></div>
+<div class="split">
+<div class="def"><span class="tag">📘 Holding Period Return</span>
+Total gain over the whole hold, <b>NOT annualized</b>; time ignore. $100,000 → $170,000 ⟹ HPR = 70% (7 days ho ya 7 years). Bas batata hai profit hua ya nahi.</div>
+<div class="def"><span class="tag">📘 Net Return</span>
+ALL incomes &amp; costs included:
+<div class="eq">Net R = <span class="frac"><span class="top">Inflows − Outflows</span><span class="bot">Outflows</span></span></div></div>
+</div>
+<div class="example"><span class="tag">✏️ Net return example</span>
+Buy $100 + <b>$2 commission</b>; dividend $7; sell $115:
+<div class="eq">Net R = (115 + 7 − 102)/102 = 20/102 ≈ <b>19.61%</b></div>
+⚠️ Commission = <mark class="p">OUTFLOW</mark> (cost of entering). Taxes ignored (global audience, rates vary) — par actual returns ko sirf LOWER karte hain.</div>
+
+<h3>3–4. Returns se Volatility tak</h3>
+<p>Expected return = ek <b>average</b> (random distribution ki expected value). Hume <em>average se expected distance</em> bhi chahiye ⟹ <mark>standard deviation = central volatility measure</mark>. (Lottery: negative EV par tiny loss vs huge improbable win — exception.)</p>
+<p><b>Markets = complex systems:</b> many participants, economies, models, risk tolerances, cash needs, taxes (LT vs ST capital gains alag taxed). <b>News</b> drives volatility: unevenly arrives, importance varies, absorption alag — algorithms headline-sentiment pe instantly sell, professionals slower, others pause &amp; buy ⟹ volatility changes.</p>
+
+<h3>5. Volatility Measures</h3>
+<div class="def"><span class="tag">📘 (a) Price Range — units of PRICE</span>
+<div class="eq">Range = Day's High − Day's Low</div>
+Friday: high 105, low 99 ⟹ $6; Monday: 106/104 ⟹ $2 ⟹ Friday more volatile. Needs intraday high/low ("high/low-water marks"); closing prices insufficient. Perfectly lucky day trader (buy low, sell high) earns exactly the range.</div>
+<div class="def"><span class="tag">📘 (b) SD of returns — units of RETURN</span>
+Last 20 daily returns (⟹ 21 trading days ≈ NYSE ka 1 month) ki SD. SD = <mark>expected distance from the average</mark>.<br>
+Daily mean 0.2%, SD 0.5%, returns ~Normal ⟹ 68% of returns ∈ (0.2−0.5, 0.2+0.5) = <b>(−0.3%, +0.7%)</b>.</div>
+<div class="alert"><span class="tag">⚠️ (c) Variance = SD² — units of SQUARED returns</span>
+<mark class="p">Variance aur SD ko interchangeably USE MAT KARO!</mark> Deviations ± hote hain; volatility ke liye size chahiye sign nahi ⟹ square karo (ya absolute value). Variance = average squared deviation; SD = √variance (units wapas correct). 20% SD ⟹ variance 4%. Baat-cheet mein "volatility" usually = SD.</div>
+
+<h3>6. Coefficient of Variation (CV)</h3>
+<div class="formula"><span class="tag">🧮 CV = volatility ÷ return</span>
+<div class="eq">CV = σ / R &nbsp;&nbsp;→&nbsp;&nbsp; "kitni volatility KHARCH karni padti hai per unit return" (exchange rate jaisa)</div>
+Stock A: 50 vol-units/return-unit; Stock B: 25 ⟹ <mark class="g">B is the bargain — LOWER CV better</mark>. Caveat: good representative samples + correct calc assume karta hai.</div>
+
+<h3>7. Sharpe Ratio</h3>
+<div class="formula"><span class="tag">🧮 Sharpe = return ÷ volatility (market premium version)</span>
+<div class="eq">Sharpe = <span class="frac"><span class="top">R − R_f</span><span class="bot">σ</span></span> &nbsp;&nbsp; (numerator = market premium)</div>
+<b>R_f = risk-free rate</b>: most conservative asset (risk-free bond) ka return. Stocks ko R_f se ZYADA kamana chahiye — warna rational investor risk-free mein hi rahega.</div>
+<div class="example"><span class="tag">✏️ Example</span>
+Stock C: premium 7%, σ 10% ⟹ 0.70 &nbsp;|&nbsp; Stock D: premium 8%, σ 12% ⟹ 0.667 ⟹ <b>prefer C</b> (more return per unit risk). Works across asset classes.</div>
+<div class="keypt"><span class="tag">⭐ Direction rule (ratta!)</span>
+<mark class="b">CV (vol per return) → LOWER better</mark> &nbsp;&nbsp;vs&nbsp;&nbsp; <mark class="g">Sharpe (return per vol) → HIGHER better</mark></div>
+
+<!-- ================= LESSON 4 ================= -->
+<div class="lesson-hd" id="l4">
+  <h2>Lesson 4 — Modeling Performance</h2>
+  <div class="kw">🔑 Keywords: Normal (Gaussian) Distribution • Skewness • Kurtosis • Student's t • Lognormal</div>
+</div>
+
+<h3>1. Prices over Time</h3>
+<ul>
+<li>Time-series plot: price (y) vs time (x). <mark>Stock prices NEVER go below zero</mark>; bond <em>yields</em> negative ho sakte hain.</li>
+<li>Price chart se return directly nahi padh sakte (entry/exit dependent); volatility eyeball ho sakti hai (range). (Text figure: Netflix COVID-19 rally.)</li>
+<li>Chart questions: kitna high/low? oscillation frequency? trend? volatility clustering? rises more abruptly than falls?</li>
+</ul>
+<div class="alert"><span class="tag">⚠️ Classic exam Q&amp;A</span>
+<b>Q: Stock prices normally distributed kyon NahI ho sakte?</b><br>
+<b>A:</b> Normal distribution negative values allow karta hai — prices negative nahi ho sakte! ✔️ Agar prices <mark class="b">log-normal</mark> hain ⟹ <mark class="g">returns normal</mark> (Lesson 3 se consistent).</div>
+
+<h3>2. Distribution of Returns</h3>
+<ul>
+<li>Prices → daily returns: y-axis return units, center ≈ 0, signs alternate. Cumulative return chart (fixed start se trade tracking) se alag.</li>
+<li><b>Time scale ↔ purpose:</b> intraday/daily = financial properties/trading detail (par idiosyncratic-news noise); monthly/quarterly = economic cycles (par trading opportunities miss). <mark>Highest frequency collect karo — aggregate up hamesha possible, disaggregate down kabhi nahi</mark> (Econometrics: kuch properties sirf daily data mein).</li>
+<li>Time order drop karke returns collapse karo ⟹ analyze as a <b>sample/distribution</b> — is lesson ka focus.</li>
+</ul>
+<div class="keypt"><span class="tag">⭐ Normal distribution = "powerful zip file" 🗜️</span>
+Billions of points → <b>2 parameters</b> (mean + SD) — jaise voters ne 2 representatives elect kiye! Inse percentiles/probabilities easily estimate ⟹ trading strategies, portfolio optimization, risk management.</div>
+<div class="alert"><span class="tag">⚠️ Par assume nahi kar sakte — CLT fails here</span>
+<b>Central Limit Theorem:</b> i.i.d. random variables ka sum → Gaussian. Kya Monday ka stock behaviour Tuesday jaisa i.i.d. hai? <mark class="p">NO</mark> — participants adapt/change behaviour ⟹ trading days neither independent nor identically distributed ⟹ normality <b>TEST karo, assume mat karo</b>.</div>
+
+<h3>3. Symmetry &amp; Skewness</h3>
+<ul>
+<li>Normal ⟹ symmetric by construction (standard normal: mean 0, SD 1; y-axis pe mirror rakho — perfect match).</li>
+<li><mark class="p">Negatively skewed = longer LEFT tail</mark> (large losses possible) &nbsp;|&nbsp; <mark class="g">positively skewed = longer RIGHT tail</mark>.</li>
+<li><b>Practical danger:</b> negatively-skewed returns + normal assumption = <b>grossly underestimated loss potential</b> (left tail ignored). Equity markets ka common pattern: panic days with large drops, without matching large up-days. (Behavioral finance: humans painful events zyada yaad rakhte hain.)</li>
+<li class="doodle">Finance ≠ physics — more like evolutionary biology + cognitive biases + socially influenced decisions.</li>
+</ul>
+<p><b>Visual checks:</b> ① histogram (bars dono side equal?) ② density plot ("mound of sand" per point — shape normal jaisi?).</p>
+<div class="formula"><span class="tag">🧮 Skewness formulas</span>
+<div class="eq">Pearson's 1st coefficient: Skew = <span class="frac"><span class="top">Mean − Mode</span><span class="bot">σ</span></span> &nbsp;&nbsp;(symmetric ⟹ mean = median ⟹ skew = 0)</div>
+<div class="eq">Sample: Skew ≈ (1/n) Σ (xᵢ − x̄)³ / s³</div>
+(Course mein math heavily use nahi hoga — CONCEPTS yaad rakho: symmetric / +ve / −ve skew + risk implications.)</div>
+<div class="keypt"><span class="tag">⭐ Rule</span>
+Symmetric distribution ⟹ SD acceptable risk measure. <mark class="p">Skewed ⟹ generally NOT.</mark></div>
+
+<h3>4. Constant Volatility? — Mixture of Normals</h3>
+<div class="example"><span class="tag">✏️ The mixture experiment</span>
+Mix: <b>80% × N(0, 1)</b> + <b>20% × N(0, 4)</b> ⟹ mixture SD ≈ <b>2</b>. Reliable? Check <mark>excess kurtosis = quality check on the variance ("variance of the variance")</mark>. Pure normal: variance known with certainty ⟹ excess kurtosis 0. Each component alone: ≈ 0. <b>Mixture: excess kurtosis ≈ 7</b> (text ke doosre example mein ≈ 10) ⟹ <mark class="p">NON-Gaussian!</mark><br>
+Baad mein program: "vol of vol" (option pricing mein).</div>
+<div class="alert"><span class="tag">⚠️ Danger</span>
+Galat SD ⟹ galat percentiles + <b>false sense of security</b>. Art of financial engineering = knowing <em>where models work &amp; where they break down</em>.</div>
+
+<h3>5. Normal coverage rules (ratta!)</h3>
+<div class="formula"><span class="tag">🧮 Gaussian coverage</span>
+<div class="eq">±1σ → <b>68%</b> &nbsp;&nbsp;•&nbsp;&nbsp; ±2σ → <b>95.5%</b> &nbsp;&nbsp;•&nbsp;&nbsp; ±3σ → <b>99.7%</b></div>
+Excess kurtosis significantly &gt; 0 ⟹ normality likely violated ⟹ SD ab reliable expected-distance nahi.</div>
+
+<h3>6. Normal or Not?</h3>
+<ul>
+<li><b>Skewness allow karne wali distributions:</b> F, skew-normal, log-normal + others (Financial Data course). Formal tests exist; robust measures: ranks, ya one-sided returns (<b>semi-variance</b> — sirf negative returns).</li>
+<li><b>Kurtosis:</b> peaked vs flat? Peaked ⟹ lighter tails; flat ⟹ <mark class="p">heavier tails</mark> (risk ke liye relevant).</li>
+</ul>
+<div class="formula"><span class="tag">🧮 Kurtosis</span>
+<div class="eq">Kurt ≈ (1/n) Σ (xᵢ − x̄)⁴ / s⁴ &nbsp;&nbsp;•&nbsp;&nbsp; Standard normal kurtosis ≈ 3 &nbsp;⟹&nbsp; <b>Excess kurtosis = Kurt − 3</b></div>
+Excess &gt; 0 ⟹ <mark class="p">heavier tails than normal</mark> &nbsp;|&nbsp; Excess &lt; 0 ⟹ thinner tails.</div>
+<div class="def"><span class="tag">📘 Student's t-distribution</span>
+Symmetric (asymmetric versions exist); HAS excess kurtosis; described by ONE parameter — <b>degrees of freedom (df)</b>. Small df (e.g., 4) ⟹ high excess kurtosis; <mark class="b">df → ∞ ⟹ t → normal</mark>.</div>
+<div class="keypt"><span class="tag">⭐ Decision framework</span>
+Skew ya excess kurtosis present ⟹ normal discredited. Returns normal ⟹ easy life (mean + SD sufficient). Not normal ⟹ ① switch to skew/kurtosis-reflecting distribution (more modeling skill) ya ② <b>nonparametric</b> (raw data, no distribution). Tool: Shiny app — high-volatility date ranges select karke distributions ka change dekho.<br><br>
+<b>Volatility takeaway:</b> volatility = fluctuation investors tolerate karte hain; preference investor-specific. FE ka job: metrics/models jo volatility represent karein even when dynamic. Next lesson: <b>correlation</b> (pairs of securities).</div>
+
+<!-- ================= READINGS ================= -->
+<div class="lesson-hd" id="r1" style="background:linear-gradient(135deg,#00695c,#26a69a);">
+  <h2>📖 Reading 1 — Stellinga et al., <em>Money &amp; Debt: The Public Role of Banks</em> (Springer 2021), Ch. 1</h2>
+  <div class="kw">Authors: Bart Stellinga, Josta de Hoog, Arthur van Riel, Casper de Vries (Netherlands Scientific Council for Government Policy — WRR) • Assignment citations ke liye names + numbers preserve kiye hain!</div>
+</div>
+
+<div class="reading"><span class="tag">🧭 Context</span>
+Dutch WRR report ka translation, Dutch Finance Minister ki request par — citizens' initiative <em>Ons Geld</em> ("Our Money") ne <b>120,000+ signatures</b> jutaye the public money creation ke liye. Post-2007–09-crisis reform debates: Positive Money (UK), Martin Wolf (FT), IMF/Bank of England research, Icelandic parliament proposal, <mark>Swiss Vollgeld referendum (June 2018): 24% for, 76% against</mark>.</div>
+
+<div class="keypt"><span class="tag">⭐ Core surprising fact</span>
+Most money is created NOT by governments/central banks but by <mark class="p">COMMERCIAL BANKS</mark> — money created when banks grant loans, destroyed when loans repaid ⟹ <b>money &amp; debt = two sides of the same coin</b>; money-supply growth inseparable from debt growth. Pre-crisis economists treated money/debt as an insignificant "veil" over real activity.</div>
+
+<h3>1.1 What is money?</h3>
+<ul>
+<li>Money = <mark>an (implicit) agreement between people — a SOCIAL CONSTRUCT</mark>. Asset serves as money only when people are confident others will accept it; value rests on <b>confidence, not material</b>. Historical forms: coins, shells, salt, coral, banknotes, digital ones-and-zeros.</li>
+<li><b>Trust must be generated &amp; maintained:</b> historically precious-metal verification + anti-counterfeiting law; today for deposits: <mark class="b">deposit guarantee schemes, banking supervision, central-bank liquidity support</mark>.</li>
+<li><b>3 origin theories:</b> ① response to <b>barter</b> inefficiencies (textbook story — <em>NOT backed by historical evidence</em>; Menger: "no one invented money") ② origins in <b>debt relationships</b> (promissory notes circulating detached from issuer/recipient) ③ role of <b>state/religious authorities</b> (money from taxes/offerings).</li>
+</ul>
+
+<div class="formula"><span class="tag">🧮 THE THREE FUNCTIONS OF MONEY (sabse important!)</span>
+<ol>
+<li><b>Means of payment</b> — generally accepted purchasing power (goods/services, wages, debts, shares, tax). Must be <em>transferable</em> without losing utility, <em>divisible</em>, and <em>sufficiently stable in value</em>.</li>
+<li><b>Store of value</b> (means of saving) — retains value over time; not easily debased. Unlike shares/bonds/jewellery/real estate, money is highly <mark>LIQUID</mark> (instantly usable as payment).</li>
+<li><b>Unit of account</b> — compare unlike things (bread vs iPhone; countries' GDP).</li>
+</ol>
+Report ki working definition: <b>money = what is generally accepted as a means of payment</b> ⟹ today mainly cash + instantly available bank deposits (+ quasi-money).</div>
+
+<div class="def"><span class="tag">📘 Monetary aggregates</span>
+<b>M1</b> = cash + demand deposits (narrowest) &nbsp;•&nbsp; <b>M2, M3</b> = wider (add savings, money-market fund shares…). <b>M0</b> = cash + central-bank reserves (base money).<br>
+M3 composition (Sept 2018, NL): <mark>7% cash • 39% payment-account deposits • 51% savings deposits (&lt;2 yr maturity / &lt;3 mo notice) • 3% other</mark>. Boundaries of "money" fluid — innovation creates money-like products, e.g., cryptocurrencies.</div>
+
+<div class="alert"><span class="tag">⚠️⭐ Box 1.2 — Is Bitcoin Money? (LESSON NE EXPLICITLY BOLA READ KARO)</span>
+Cryptos = digital currencies generated by cryptography. <mark>Bitcoin launched October 2008, just after the fall of Lehman Brothers</mark>. Developers ka hope: alternative to money dependent on governments/central banks/commercial banks — trust instead on "objective, rational, incorruptible mathematical calculations" in a decentralized, shared, publicly accessible accounting system.<br><br>
+<b>VERDICT: Bitcoin does NOT fulfil money's three functions:</b>
+<ol>
+<li><b>Means of payment ✗</b> — ability to pay with BTC <em>extremely limited</em>;</li>
+<li><b>Store of value ✗</b> — too volatile (<mark>&gt;$20,000 Dec 2017 → ~$6,000 summer 2018</mark>) — unsuitable for saving, though fine for <em>speculation</em>;</li>
+<li><b>Unit of account ✗</b> — handful of products priced in BTC; users need a real-time app for dollar/euro worth.</li>
+</ol>
+<b>Box ka lesson:</b> stable currency banana HARD hai. Limited supply + decentralized verification ≠ guaranteed stability; mathematical trust-generation has clear limits. Euro/dollar backed by <mark class="b">institutions whose explicit purpose is guarantees &amp; stability</mark>; open question: can a crypto without institutional backing ever be an alternative?</div>
+
+<h3>1.2 What is debt?</h3>
+<ul>
+<li>Debt framed economically AND morally (Dutch/German <em>schuld</em> = debt + guilt; Bible: "Let love be your only debt"; Islam prohibits interest; centuries of European hostility). Yet debt-financed investment crucial: <b>Ferguson</b> — credit/debt rival all technological innovations in fuelling civilization (ice-maker, farmer's fertilizer, education loan — future income ko aaj use karo).</li>
+<li><mark>Graeber: debt = "an exchange that has not been brought to completion"</mark> (non-simultaneous exchange) ⟹ time gap ⟹ repayment risk ⟹ requires MUTUAL TRUST (hence "creditor"; German <em>Gläubiger</em> = believer).</li>
+<li>Keynes: <em>"Owe your banker £1,000 and you are at his mercy; owe him £1 million and the position is reversed."</em></li>
+<li>Not all debt voluntary (tax debt); unequal parties ⟹ usury laws, max interest rates. Repayment limits: debtors' prisons gone (Dickens' Marshalsea); <mark class="g">Netherlands first in Europe to decriminalize bankruptcy</mark> — Amsterdam <em>Desolate Boedelkamer</em> (1627); isliye <b>Rembrandt</b> dobara paint kar paya! Lender accepts some risk.</li>
+</ul>
+<div class="def"><span class="tag">📘 Box 1.3 — Is money always debt?</span>
+Current system: money created with loans; bank deposits ARE bank debt to account holders. PAR — not all money is debt: <mark>CASH is NOT debt</mark> (central bank se gold/kuch bhi exchange nahi hota; "debt" recording somewhat arbitrary vs equity). Debt can serve as money if divisible &amp; transferable; <b>not all debt is money, not all money is debt</b>. Money is always a claim on current/future production ⟹ unlimited creation risks inflation.</div>
+
+<h3>1.3 Trust</h3>
+<ul>
+<li>Trust crucial for money &amp; lending; crisis ne shake kiya. <em>Ons Geld</em> + crypto popularity = expressions of MISTRUST in the current system.</li>
+<li>Dutch data: banks mein <b>least trust</b> among institutions; strikingly <mark class="p">highly educated people trust the banking system LESS</mark> (usual pattern ka ULTA!). DNB survey: <mark>economists trust financial-system stability LESS than the general public</mark>; trust correlated with belief that regulation sufficiently tightened.</li>
+<li>Trust cannot be enforced — earned through proven reliability + ability to voice dissatisfaction. Report gauges: <b>economic contribution, stability, fairness</b> (reliability) + <b>influence, legitimacy</b> (dissatisfaction).</li>
+</ul>
+
+<h3>1.4 Dynamism of the system</h3>
+<ul>
+<li>System = banks, central bank, public authorities, pension funds, insurers, <b>shadow banks</b> (non-bank institutions doing bank-like lending on short-term debt, but <em>cannot create deposit money</em>). Constantly changing: industrialization, globalization, tech (payments in milliseconds).</li>
+<li>New tech → cryptos + innovations; central banks study <mark class="b">CBDC (central bank digital currency)</mark>. Haldane: money "is a social convention", not just cryptographic code.</li>
+<li><b>Box 1.4 Fintech:</b> Lagarde's definition — new technologies affecting financial services: <mark>AI, big data, biometrics, distributed ledger technologies (blockchain)</mark>. Functions: payments, savings, finance, insurance (+ IMF's 5th: advice). Small fintechs don't yet threaten big banks (licences, size, expertise, guarantees); real question = <b>bigtech</b> (Amazon Cash, Google Pay; later Facebook's Libra). Regulation-dependent ⟹ continuous political oversight essential.</li>
+<li>Other uncertainties: record debt/GDP; near-zero ECB rates; massive bond purchases; <mark>negative-interest bonds</mark> (governments/companies effectively RECEIVE interest from lenders!).</li>
+</ul>
+<div class="sticky"><b>🎯 Ch.1 exam nuggets:</b> commercial banks create most money via lending • 3 functions of money • Bitcoin fails all three (Box 1.2) • money = social construct on trust • debt = incomplete/non-simultaneous exchange (Graeber) • cash is money but NOT debt.</div>
+
+<!-- ================= READING 2 ================= -->
+<div class="lesson-hd" id="r2" style="background:linear-gradient(135deg,#4a148c,#7b1fa2);">
+  <h2>📖 Reading 2 — Kjærland et al., "An Analysis of Bitcoin's Price Dynamics" (JRFM 2018)</h2>
+  <div class="kw">Authors: Frode Kjærland, Aras Khazal, Erlend A. Krogstad, Frans B. G. Nordstrøm, Are Oust • J. Risk &amp; Financial Mgmt 11(4):63 • Required: Section 2 (pp. 2–3)</div>
+</div>
+
+<div class="reading"><span class="tag">🧭 Paper's aim</span>
+Identify Bitcoin's price drivers (weekly data 2013–2018, incl. volatile late-2017/early-2018) using <b>ARDL</b> (Autoregressive Distributed Lag) + <b>GARCH</b> models — help investors make sound decisions. BTC: $0.07 (2009) → all-time high <b>$20,089 on 17 Dec 2017</b>; 2017 mein +1270%, "Bitcoin's IPO moment".</div>
+
+<h3>§2.1 — Intro to cryptocurrencies &amp; Bitcoin</h3>
+<ul>
+<li>Bitcoin's major innovation = <b>decentralized technology</b> (<mark class="b">Dwyer 2015</mark>): database (blockchain) distributed across participating computers, not one server.</li>
+<li><b>Mining</b> = solving complex computational puzzles; incentives = <mark>transaction fees + Bitcoin rewards</mark>.</li>
+<li><b>Hashrate</b> = speed at which a computer completes an operation in the Bitcoin code; <b>mining difficulty</b> = puzzle complexity, directly correlated with hashrate. Hashrate rise/fall ⟹ algorithm <em>adjusts difficulty</em> so supply follows a predetermined path; new coins ≈ <mark>every 10 minutes, price-independent</mark>.</li>
+</ul>
+<div class="keypt"><span class="tag">⭐ KEY CONCEPT — Deterministic supply</span>
+<mark class="p">Bitcoin supply is DETERMINISTIC</mark> — inelastic, dependent SOLELY on time, NOT on price (unlike a normal good). Ye paper ka foundation hai.</div>
+
+<h3>§2.2 — Literature review (Bitcoin kya hai?)</h3>
+<table>
+<tr><th>Author(s)</th><th>Claim / Finding</th></tr>
+<tr><td><b>Yermack (2013)</b></td><td>Bitcoin behaves more like a <mark>speculative store of value</mark> than a currency</td></tr>
+<tr><td><b>Dwyer (2015)</b></td><td>Electronic currency for trade / personal balance sheets</td></tr>
+<tr><td><b>Polasik et al. (2015)</b></td><td>Can operate as medium of exchange alongside other payment technologies; volume↑ ⟹ price↑</td></tr>
+<tr><td><b>Garcia et al. (2014)</b></td><td>Bitcoin = financial <b>bubble</b> (exchange rate ≠ fundamental value; fundamental value from mining cost)</td></tr>
+<tr><td><b>Hayes (2015, 2018)</b></td><td>Cost-of-production valuation model</td></tr>
+<tr><td><b>Cheah &amp; Fry (2015)</b></td><td>Speculative bubble; <mark class="p">fundamental value of Bitcoin = ZERO</mark></td></tr>
+<tr><td><b>Corbet et al. (2017)</b></td><td>No clear evidence of a bubble</td></tr>
+<tr><td><b>Bouri et al. (2017b)</b></td><td>Effective <b>diversifier</b>; sometimes safe-haven / hedge properties</td></tr>
+<tr><td><b>Georgoula et al. (2015), Hayes (2015)</b></td><td>Found Hashrate a significant POSITIVE price driver (jo ye paper contradict karta hai!)</td></tr>
+<tr><td><b>Kristoufek (2013, 2015)</b></td><td>Google-search frequency = good proxy for interest/popularity; price ↔ popularity relation <mark>bidirectional</mark></td></tr>
+<tr><td><b>Ciaian et al. (2016)</b></td><td>Wikipedia searches positive; supply/demand factors strong; standard currency models partly explain</td></tr>
+</table>
+
+<h3>§2.3 — Theoretical foundation ⭐ (lesson isi ke liye bhejta hai!)</h3>
+<div class="split">
+<div class="def"><span class="tag">📘 Efficient Market Hypothesis (Fama 1976; via Santoni 1987)</span>
+ALL relevant info current prices mein hai; prices change only on <b>new fundamental information</b> ⟹ <mark>past price changes contain NO useful info about future changes</mark>.</div>
+<div class="alert"><span class="tag">🃏 Greater Fool Theory (Santoni 1987)</span>
+Investors treat fundamentals as <b>IRRELEVANT</b>; buy believing a "bigger fool" will pay more later — pure speculation, anticipating rises <em>only because prices rose before</em>.</div>
+</div>
+<div class="def"><span class="tag">📘 Momentum Theory (Jegadeesh &amp; Titman 1993, 2001)</span>
+Empirically: rising prices rise further, falling prices fall further; strong past performers outperform weak past performers. Relies on <b>short-term movements, not fundamentals</b>; cause = <mark>cognitive bias / irrational investor behaviour</mark>.</div>
+<div class="def"><span class="tag">📘 Volatility &amp; safe havens</span>
+Turmoil ⟹ investors shift to <b>safe-haven</b> assets (currency = safe-haven if demand RISES in financial stress). <b>Glosten et al. (1993):</b> negative equity shocks generate more volatility than positive. <b>Baur &amp; McDermott (2012):</b> gold's volatility reacts INVERSELY to negative shocks (safe-haven property; rising gold price = rising macro uncertainty). Bitcoin par: <b>Bouri et al. (2016)</b> — no asymmetric return-volatility relation (supports safe-haven); <mark class="p">Kjærland et al. (2018) — opposite finding</mark>.</div>
+
+<h3>Key findings of the paper (assignment gold 🥇)</h3>
+<div class="keypt"><span class="tag">⭐ Finding #1 — Hashrate is IRRELEVANT</span>
+Supply deterministic hai ⟹ processing power add karne se output NAHI badhta ⟹ hashrate ko price model mein daalna galat. Causality ULTI chalti hai: <mark>price → hashrate</mark> (price↑ → mining profitable → more miners/power until excess profit = 0; price drop → power pulled out). Ye previous literature (Bouoiyour &amp; Selmi, Garcia, Georgoula, Hayes, Kristoufek, Sovbetov…) ko CONTRADICT karta hai — paper ka primary contribution.</div>
+<div class="example"><span class="tag">✓ Significant drivers</span>
+<ul>
+<li><b>S&amp;P 500</b> — largest coefficient (ARDL: S&amp;P +1% ⟹ BTC +1.41–1.77%). Market optimism spills into Bitcoin ⟹ BTC investors likely <mark>risk-seeking</mark>. (Supported by Yermack 2013, Dyhrberg 2016.)</li>
+<li><b>Google searches</b> — attention ⟹ demand. Short-run effect ~0.11–0.30%, long-run ~0.37%. (Consistent with Kristoufek, Ciaian et al.)</li>
+<li><b>Last week's BTC return</b> (lag ~0.19%) ⟹ <mark class="p">EMH seemingly does NOT hold</mark>; consistent with <b>Momentum + Greater Fool</b> behaviour (confusing context, too much new info, quick decisions, get-rich-quick psychology).</li>
+</ul></div>
+<div class="alert"><span class="tag">✗ Insignificant</span>
+<b>VIX</b> (except 2017–18 sub-period: NEGATIVE relation ⟹ <mark>Bitcoin does NOT show safe-haven properties</mark> — inconsistent with Bouri et al. 2017a/b), <b>oil, gold</b> (⟹ BTC lacks commodity properties; in line with Bouri et al. 2018b), <b>transaction volume</b> (in ARDL; GARCH mein significant negative). GARCH: ARCH+GARCH effects ≈ 87.7–90.5% ⟹ <b>strong volatility persistence</b>.</div>
+
+<!-- ================= READING 3 ================= -->
+<div class="lesson-hd" id="r3" style="background:linear-gradient(135deg,#880e4f,#c2185b);">
+  <h2>📖 Reading 3 — Levenkron, <em>There's More Than Meets the Eye: Looking at Art as an Alternative Investment</em></h2>
+  <div class="kw">Hannah Levenkron • Emory University Honors Thesis (Economics), 2011 • Required: Abstract only</div>
+</div>
+
+<div class="reading"><span class="tag">🧭 Study design</span>
+Index of prices/returns of paintings by the <b>world's top 500 artists</b>, compared with the <b>S&amp;P 500, 10-year government bonds, 3-month Treasury bills</b>, over <mark>1960–2010</mark> — fine art as an alternative investment.</div>
+<div class="formula"><span class="tag">🧮 Findings — YE NUMBERS RATTA MAARO</span>
+<ul>
+<li>Art's annual return = <mark class="g">12% — the HIGHEST of all compared assets</mark></li>
+<li>BUT: <b>high standard deviation</b> + <mark class="p">LOW Sharpe ratio</mark> ⟹ art = very risky asset</li>
+<li>CAPM regression: art's <b>market beta = 0.79</b></li>
+<li>Correlates <b>positively with equities</b>: correlation coefficient = <mark>13.9%</mark></li>
+<li>⟹ Art is <b>NOT an attractive alternative to stocks</b></li>
+<li>Autoregression: <mark class="b">art index LEADS the S&amp;P 500</mark>; art market recovered <em>quicker</em> from the (2008) financial crisis than equities ⟹ art might be a good <b>predictor of the future state of the world's economy</b></li>
+<li><b>Conclusion:</b> despite high returns, high risk makes art an <mark class="p">unappealing investment</mark></li>
+</ul></div>
+<div class="sticky blue"><b>🔗 Lesson link:</b> Lesson 2 §7 (alternative assets, no periodic cash flows) + Lesson 3 ka Sharpe logic — <b>"highest return" ≠ "best investment"</b>; return PER UNIT volatility check karna zaroori hai. Positive equity correlation ⟹ diversification benefit bhi limited!</div>
+
+<!-- ================= CHEAT SHEET ================= -->
+<div class="lesson-hd" id="cheat" style="background:linear-gradient(135deg,#e65100,#f57c00);">
+  <h2>⚡ Quick Revision Sheet — exam se pehle 10 minute</h2>
+</div>
+<div class="formula"><span class="tag">🧮 Formulas</span>
+<div class="eq">Equity = Assets − Liabilities</div>
+<div class="eq">GGM: P₀ = D₁/(r − g), &nbsp; D₁ = D₀(1+g), &nbsp; need r &gt; g &nbsp;|&nbsp; Price&lt;P₀ BUY, Price&gt;P₀ SELL</div>
+<div class="eq">H-model: P₀ = [D₀(1+g_L) + D₀·H·(g_H − g_L)]/(r − g_L), &nbsp; H = decline yrs ÷ 2</div>
+<div class="eq">Market Cap = Shares × Price &nbsp;(splits change NOTHING)</div>
+<div class="eq">R = (P₂ − P₁ + D)/P₁ &nbsp;|&nbsp; R̃ = ln(P₂/P₁) &nbsp;|&nbsp; R̃₀,T = Σ R̃ₜ (ADDITIVE!) &nbsp;|&nbsp; rebalanced: R* = Σ Rₜ</div>
+<div class="eq">Net R = (inflows − outflows)/outflows &nbsp;(commission = outflow)</div>
+<div class="eq">De-annualize: (1 + R_ann)^(t/12) − 1 &nbsp;|&nbsp; GIPS: extrapolated annualized returns FORBIDDEN</div>
+<div class="eq">CV = σ/R (LOWER better) &nbsp;|&nbsp; Sharpe = (R − R_f)/σ (HIGHER better)</div>
+<div class="eq">Skew (Pearson) = (mean − mode)/σ &nbsp;|&nbsp; Excess kurtosis = kurtosis − 3 (&gt;0 ⟹ fat tails)</div>
+<div class="eq">Normal coverage: ±1σ 68% • ±2σ 95.5% • ±3σ 99.7%</div>
+</div>
+<div class="keypt"><span class="tag">⭐ One-liners</span>
+<ol>
+<li>ln(1+x) ≈ x for small x ⟹ log ≈ arithmetic for small returns.</li>
+<li>n prices ⟹ n−1 returns; returns aggregate UP hote hain, DOWN nahi.</li>
+<li>Prices lognormal ⟺ returns normal; prices normal ho hi nahi sakte (no negatives).</li>
+<li>Variance = σ² — SD se kabhi confuse mat karo.</li>
+<li>CLT fails for markets: trading days NOT i.i.d. ⟹ normality test karo, assume nahi.</li>
+<li>Negative skew ⟹ hidden left-tail loss risk; skewed data mein SD unreliable.</li>
+<li>Student's t: one parameter (df); df↑ ⟹ normal ke paas.</li>
+<li>Money ke 3 functions: payment, store of value, unit of account — <b>Bitcoin fails all 3</b> (Stellinga Box 1.2).</li>
+<li>BTC supply deterministic ⟹ <b>Hashrate irrelevant</b>; drivers: S&amp;P 500, Google Trends, lagged return ⟹ EMH fails; Momentum + Greater Fool (Kjærland).</li>
+<li>Art (Levenkron): 12% return (highest) par high σ, low Sharpe, β = 0.79, +13.9% equity correlation ⟹ unappealing; art index LEADS S&amp;P 500.</li>
+<li>Bankruptcy order: secured creditors (bondholders) → employees → tax → environmental → preferred → common (LAST).</li>
+<li>"Expected to pay" = D₁; "just paid" = D₀ ⟹ ×(1+g) pehle!</li>
+<li>Coins = own blockchain (BTC); Tokens = on existing blockchain (ETH tokens). ERC-20 fungible, ERC-721 non-fungible. BTC = PoW, ETH = PoS.</li>
+<li>Dividend aristocrats: 25 straight years of dividend increases (S&amp;P 500, ~68 firms).</li>
+<li>Commercial banks create most money via lending (Stellinga); cash is money but NOT debt.</li>
+</ol></div>
+
+<p class="doodle" style="text-align:center; margin-top:40px;">— End of Module 2 register • All the best Vipul bhai! 🍀 Next up: correlation (Module 2 → aage) —</p>
+</div>
+</body>
+</html>

@@ -9,7 +9,7 @@ Personal revision notes from WorldQuant University's MS in Financial Engineering
 | Module | Topic | Status |
 |---|---|---|
 | 1 | Financial Markets — TVM, Interest Rates, Spot & Forward Rates, Yield Curve | ✅ |
-| 2 | — | 🔜 |
+| 2 | Stocks & Cryptocurrencies — Equity Markets, Valuation, Crypto Fundamentals | ✅ |
 
 ## Structure
 
@@ -17,6 +17,7 @@ Personal revision notes from WorldQuant University's MS in Financial Engineering
 docs/
   index.html     # menu page
   module1.html   # Module 1 notes
+  module2.html   # Module 2 notes
 ```
 
 Notes yahan `docs/` folder mein rakhi hain taaki GitHub Pages seedha isi folder ko serve kar sake.
