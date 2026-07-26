@@ -1,23 +1,22 @@
-# WQU MFE — Handwritten Notes
+# Academic Notes — Handwritten Style
 
-Personal revision notes from WorldQuant University's MS in Financial Engineering program — written in a colorful "handwritten notebook" style with derivations, solved examples, and diagrams.
+Personal revision notes across universities &amp; degrees — written in a colorful "handwritten notebook" style with derivations, solved examples, and diagrams.
 
-**Live site:** https://vipulmanoharahuja.github.io/wqu-mfe-notes/ *(enable GitHub Pages → Settings → Pages → Source: `main` / `docs`)*
-
-## Modules
-
-| Module | Topic | Status |
-|---|---|---|
-| 1 | Financial Markets — TVM, Interest Rates, Spot & Forward Rates, Yield Curve | ✅ |
-| 2 | Stocks & Cryptocurrencies — Equity Markets, Valuation, Crypto Fundamentals | ✅ |
+**Live site:** https://vipulmanoharahuja.github.io/wqu-mfe-notes/ *(GitHub Pages → Source: `main` / `docs`)*
 
 ## Structure
 
 ```
 docs/
-  index.html     # menu page
-  module1.html   # Module 1 notes
-  module2.html   # Module 2 notes
+  index.html                              # Home — list of universities
+  world-quant-university/
+    index.html                            # Degrees at WQU
+    ms-financial-engineering/
+      index.html                          # Subjects in MFE
+      26-07-mscfe-560-financial-markets/
+        index.html                        # Modules in this subject
+        module1.html                      # Saving & Borrowing
+        module2.html                      # Stocks & Cryptocurrencies
 ```
 
-Notes yahan `docs/` folder mein rakhi hain taaki GitHub Pages seedha isi folder ko serve kar sake.
+Future universities/degrees (e.g. a PG in AI / Data Science) go alongside `world-quant-university/` at the same level under `docs/`.

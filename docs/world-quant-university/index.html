@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academic Notes — Home</title>
+<title>World Quant University — Notes</title>
 <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -16,7 +16,9 @@
     background:repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--line) 31px, var(--line) 32px), var(--paper);
     border-left:3px solid #d9c9a3; box-shadow:0 4px 14px rgba(0,0,0,.25); padding:24px 18px 34px 52px; position:relative; border-radius:3px; }
   .page::before{ content:''; position:absolute; top:0; bottom:0; left:38px; width:2px; background:var(--margin-red); }
-  h1{ font-family:'Caveat','Kalam',cursive; color:var(--pen-red); font-size:40px; text-align:center;
+  .crumb{ font-size:14px; margin-bottom:10px; }
+  .crumb a{ color:var(--pen-blue); text-decoration:none; }
+  h1{ font-family:'Caveat','Kalam',cursive; color:var(--pen-red); font-size:38px; text-align:center;
     text-decoration:underline wavy #e65100; text-underline-offset:8px; margin-bottom:6px; }
   .subtitle{ text-align:center; color:var(--pen-purple); font-weight:700; margin-bottom:18px; }
   .divider{ text-align:center; color:var(--pen-red); font-size:22px; letter-spacing:6px; margin:18px 0; }
@@ -30,40 +32,30 @@
   .card .desc{ font-size:14px; color:#555; font-family:'Patrick Hand',cursive; }
   .card .chip{ display:inline-block; background:var(--pen-blue); color:#fff; font-family:'Caveat',cursive;
     font-size:20px; padding:2px 18px; border-radius:20px; transform:rotate(-2deg); box-shadow:2px 2px 0 rgba(0,0,0,.2); white-space:nowrap; }
-  .card.soon{ border-color:#bbb; opacity:.55; pointer-events:none; }
-  .card.soon .chip{ background:#999; }
   footer{ text-align:center; margin-top:24px; font-size:14px; color:#777; }
 </style>
 </head>
 <body>
 
 <div class="page">
-  <h1>📚 ACADEMIC NOTES</h1>
-  <p class="subtitle">My Register Notes ✍ | Simple English | Derivations, Solved Sums &amp; Diagrams</p>
+  <p class="crumb"><a href="../index.html">🏠 Home</a></p>
+  <h1>🎓 WORLD QUANT UNIVERSITY</h1>
+  <p class="subtitle">Degrees &amp; Programs</p>
   <div class="divider">✦ ✦ ✦</div>
 
   <ul class="card-list">
     <li>
-      <a class="card" href="world-quant-university/index.html">
+      <a class="card" href="ms-financial-engineering/index.html">
         <div>
-          <div class="name">World Quant University</div>
-          <div class="desc">MS in Financial Engineering</div>
+          <div class="name">MS in Financial Engineering</div>
+          <div class="desc">Started July 2026</div>
         </div>
         <span class="chip">OPEN →</span>
       </a>
     </li>
-    <li>
-      <a class="card soon" href="#">
-        <div>
-          <div class="name">Future University — Coming Soon</div>
-          <div class="desc">PG Degree in AI / Data Science</div>
-        </div>
-        <span class="chip">SOON</span>
-      </a>
-    </li>
   </ul>
 
-  <footer>Personal revision notes across universities &amp; degrees</footer>
+  <footer>World Quant University</footer>
 </div>
 
 </body>
