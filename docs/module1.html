@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Markets — Module 1 Handwritten Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pen-blue:#1a3fa0;
+    --pen-black:#2b2b2b;
+    --pen-red:#c62828;
+    --pen-green:#1b7a3d;
+    --pen-purple:#6a1b9a;
+    --pen-orange:#e65100;
+    --hl-yellow:#fff59d;
+    --hl-green:#c8f7c5;
+    --hl-pink:#ffd6e0;
+    --hl-blue:#cfe8ff;
+    --paper:#fdfbf3;
+    --line:#bcd6e8;
+    --margin-red:#f4a5a5;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:#e8e2d0;
+    font-family:'Kalam','Patrick Hand','Segoe Print','Comic Sans MS',cursive;
+    color:var(--pen-blue);
+    padding:14px 6px;
+    font-size:17px;
+    line-height:1.65;
+  }
+  .page{
+    max-width:820px;
+    margin:0 auto 30px auto;
+    background:
+      repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--line) 31px, var(--line) 32px),
+      var(--paper);
+    border-left:3px solid #d9c9a3;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    padding:24px 18px 34px 52px;
+    position:relative;
+    border-radius:3px;
+  }
+  .page::before{
+    content:'';
+    position:absolute; top:0; bottom:0; left:38px;
+    width:2px; background:var(--margin-red);
+  }
+  .page::after{
+    content:'';
+    position:absolute; top:26px; left:10px;
+    width:14px; height:14px; border-radius:50%;
+    background:#e8e2d0; box-shadow:inset 0 2px 3px rgba(0,0,0,.3), 0 0 0 0 transparent, 0 90px 0 0 #e8e2d0, inset 0 2px 3px rgba(0,0,0,.3);
+  }
+  h1{
+    font-family:'Caveat','Kalam',cursive;
+    color:var(--pen-red);
+    font-size:36px;
+    text-align:center;
+    text-decoration:underline wavy var(--pen-orange);
+    text-underline-offset:8px;
+    margin-bottom:18px;
+  }
+  h2{
+    font-family:'Caveat','Kalam',cursive;
+    color:var(--pen-black);
+    font-size:29px;
+    margin:26px 0 6px 0;
+    border-bottom:3px double var(--pen-red);
+    display:inline-block;
+    padding-right:20px;
+  }
+  h3{
+    color:var(--pen-purple);
+    font-size:20px;
+    margin:18px 0 4px 0;
+  }
+  h3::before{content:'✎ ';}
+  p{margin-bottom:8px;}
+  .red{color:var(--pen-red); font-weight:700;}
+  .green{color:var(--pen-green); font-weight:700;}
+  .purple{color:var(--pen-purple); font-weight:700;}
+  .orange{color:var(--pen-orange); font-weight:700;}
+  .hl{background:linear-gradient(104deg, transparent 1%, var(--hl-yellow) 2%, var(--hl-yellow) 98%, transparent 99%); padding:0 4px; border-radius:3px;}
+  .hlg{background:var(--hl-green); padding:0 4px; border-radius:3px;}
+  .hlp{background:var(--hl-pink); padding:0 4px; border-radius:3px;}
+  .hlb{background:var(--hl-blue); padding:0 4px; border-radius:3px;}
+
+  .formula{
+    background:var(--hl-yellow);
+    border:2px dashed var(--pen-red);
+    border-radius:10px;
+    padding:10px 14px;
+    margin:10px 0;
+    font-size:19px;
+    color:var(--pen-black);
+    font-weight:700;
+    text-align:center;
+    box-shadow:2px 3px 0 rgba(0,0,0,.08);
+  }
+  .formula small{display:block; font-weight:400; font-size:14px; color:#555; margin-top:4px;}
+
+  .example{
+    background:var(--hl-green);
+    border-left:6px solid var(--pen-green);
+    border-radius:0 10px 10px 0;
+    padding:10px 14px;
+    margin:12px 0;
+    color:#173d22;
+  }
+  .example .tag{
+    display:inline-block; background:var(--pen-green); color:#fff;
+    padding:1px 12px; border-radius:14px; font-size:14px; margin-bottom:6px;
+    font-weight:700; letter-spacing:.5px;
+  }
+  .steps{margin-left:18px;}
+  .steps li{margin-bottom:4px;}
+
+  .note{
+    background:var(--hl-pink);
+    border:2px solid var(--pen-red);
+    border-radius:12px;
+    padding:8px 14px;
+    margin:12px 0;
+    color:#7a1220;
+    position:relative;
+  }
+  .note::before{
+    content:'⚠ YAAD RAKHO!';
+    display:block; font-weight:700; color:var(--pen-red);
+    font-size:15px; letter-spacing:1px; margin-bottom:2px;
+  }
+  .tip{
+    background:var(--hl-blue);
+    border:2px dotted var(--pen-blue);
+    border-radius:12px;
+    padding:8px 14px;
+    margin:12px 0;
+    color:#0d2b66;
+  }
+  .tip::before{
+    content:'💡 EXAM TIP:';
+    font-weight:700; margin-right:6px; color:var(--pen-blue);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    background:#fff;
+    font-size:15px;
+  }
+  th{background:var(--pen-blue); color:#fff; padding:6px; border:2px solid var(--pen-blue);}
+  td{border:2px solid var(--pen-blue); padding:6px; color:var(--pen-black);}
+  tr:nth-child(even) td{background:#eef5ff;}
+
+  .derivation{
+    background:#fff;
+    border:2px solid var(--pen-purple);
+    border-radius:10px;
+    padding:10px 14px;
+    margin:12px 0;
+    color:var(--pen-black);
+  }
+  .derivation .tag{
+    display:inline-block; background:var(--pen-purple); color:#fff;
+    padding:1px 12px; border-radius:14px; font-size:14px; margin-bottom:6px; font-weight:700;
+  }
+  .derivation .line{margin:6px 0; padding-left:10px;}
+  .arrow{color:var(--pen-orange); font-weight:700;}
+
+  ul.pen{margin-left:22px;}
+  ul.pen li{margin-bottom:5px;}
+  ul.pen li::marker{color:var(--pen-red);}
+
+  .fig{
+    text-align:center;
+    margin:14px 0;
+    background:#fff;
+    border:2px solid var(--pen-blue);
+    border-radius:10px;
+    padding:10px 4px 4px 4px;
+  }
+  .fig .cap{font-size:14px; color:var(--pen-purple); font-weight:700; margin-top:2px;}
+  svg{max-width:100%; height:auto;}
+  .lessonchip{
+    display:inline-block;
+    background:var(--pen-blue);
+    color:#fff;
+    font-family:'Caveat',cursive;
+    font-size:22px;
+    padding:2px 22px;
+    border-radius:20px;
+    transform:rotate(-2deg);
+    box-shadow:2px 2px 0 rgba(0,0,0,.2);
+    margin-bottom:8px;
+  }
+  .keywords{
+    font-size:14px; color:var(--pen-orange); font-weight:700;
+    border:1.5px dashed var(--pen-orange); border-radius:8px;
+    padding:5px 10px; margin-bottom:10px; background:#fff7ee;
+  }
+  .divider{text-align:center; color:var(--pen-red); font-size:22px; letter-spacing:6px; margin:18px 0;}
+</style>
+</head>
+<body>
+
+<!-- ================= COVER + LESSON 1 ================= -->
+<div class="page">
+  <h1>📘 FINANCIAL MARKETS — MODULE 1</h1>
+  <p style="text-align:center;" class="purple">My Register Notes ✍ | Simple English | With Derivations, Solved Sums &amp; Diagrams</p>
+  <div class="divider">✦ ✦ ✦</div>
+
+  <div class="lessonchip">LESSON 1</div>
+  <h1 style="font-size:30px;">SAVING AND BORROWING</h1>
+  <div class="keywords">🔑 Keywords: Time Value of Money, Interest Rate, Principal, Maturity, Spot Rate, Forward Rate, Simple &amp; Compound Interest, Yield Curve</div>
+
+  <h2>1. Time Value of Money (TVM)</h2>
+  <p><span class="hl">₹1 / $1 today is worth MORE than ₹1 / $1 in the future.</span></p>
+  <p><span class="red">Why? Two reasons:</span></p>
+  <ul class="pen">
+    <li><b>Investment reason:</b> If I get $1,000 today, I can invest it at 5% → after 1 year I have <span class="hlg">$1,050</span>. So $1,000 today = $1,050 next year. I am <i>indifferent</i> between the two.</li>
+    <li><b>Human nature reason:</b> People love spending NOW (instant gratification). I will only delay my spending (i.e., save) if I am rewarded with <span class="hlg">extra money later</span>.</li>
+  </ul>
+
+  <h2>2. Interest Rates</h2>
+  <p>Interest rate = <span class="hlb">cost of the loan</span> (for borrower) = <span class="hlb">compensation for waiting + taking risk</span> (for lender).</p>
+  <p><span class="purple">Lender decides the rate based on:</span></p>
+  <ul class="pen">
+    <li>Purpose of the loan</li>
+    <li>Market / economic conditions (recession → repayment uncertain)</li>
+    <li>Financial reputation of the borrower</li>
+    <li>Amount &amp; duration of the loan</li>
+  </ul>
+  <div class="note">Longer duration + Bigger amount = <b>Riskier loan</b> = <b>Higher interest rate</b>. Also banks compete with each other, so competition can lower rates.</div>
+
+  <h2>3. Simple vs Compound Interest</h2>
+  <h3>Simple Interest</h3>
+  <p>Interest is earned <span class="red">only on the principal</span>, every year, flat.</p>
+  <div class="formula">FV = P (1 + r·t)
+    <small>P = principal, r = annual rate, t = time in years</small>
+  </div>
+  <h3>Compound Interest</h3>
+  <p>Interest is earned on principal <span class="red">+ previously earned interest</span> → <span class="hl">"Interest earns interest!"</span></p>
+  <div class="formula">FV = P (1 + r)<sup>t</sup></div>
+
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p><b>Q.</b> Deposit $100,000 for 10 years. Bank A: 6% <u>simple</u>. Bank B: 5% <u>compound</u>. Which bank?</p>
+    <ol class="steps">
+      <li><b>Bank A (simple):</b> FV = 100,000 (1 + 0.06 × 10) = 100,000 × 1.6 = <b>$160,000</b></li>
+      <li><b>Bank B (compound):</b> FV = 100,000 (1.05)<sup>10</sup> = 100,000 × 1.62889 = <b>$162,889.46</b></li>
+      <li><b>Answer:</b> Bank B wins! Even with a LOWER rate, compounding grows faster over long time.</li>
+    </ol>
+    <p>👉 As a <b>saver</b> → prefer compound. As a <b>borrower</b> → prefer simple!</p>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="35" y1="170" x2="320" y2="170" stroke="#2b2b2b" stroke-width="2"/>
+      <line x1="35" y1="170" x2="35" y2="15" stroke="#2b2b2b" stroke-width="2"/>
+      <text x="300" y="188" font-size="12" fill="#2b2b2b">Time →</text>
+      <text x="8" y="20" font-size="12" fill="#2b2b2b">Value</text>
+      <path d="M35,160 L320,95" stroke="#1a3fa0" stroke-width="3" fill="none"/>
+      <path d="M35,160 Q200,140 320,30" stroke="#c62828" stroke-width="3" fill="none"/>
+      <text x="200" y="118" font-size="13" fill="#1a3fa0" font-weight="bold">Simple (straight line)</text>
+      <text x="175" y="45" font-size="13" fill="#c62828" font-weight="bold">Compound (curve ↑ exponential)</text>
+    </svg>
+    <div class="cap">Fig 1: Compound interest overtakes simple interest over time 🚀</div>
+  </div>
+
+  <h2>4. Present Value (PV) &amp; Forward/Future Value (FV)</h2>
+  <div class="formula">FV = PV (1 + r)<sup>t</sup> &nbsp;&nbsp;⟺&nbsp;&nbsp; PV = FV / (1 + r)<sup>t</sup> &nbsp;&nbsp;⟺&nbsp;&nbsp; r = (FV/PV)<sup>1/t</sup> − 1</div>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p><b>Q.</b> We lend $1,000 and receive $1,250 after 2 years. What is our return r?</p>
+    <ol class="steps">
+      <li>FV = 1250, PV = 1000, t = 2</li>
+      <li>r = (1250/1000)<sup>1/2</sup> − 1 = (1.25)<sup>0.5</sup> − 1 = 1.1180 − 1</li>
+      <li><b>r ≈ 0.1180 = 11.80% per year</b></li>
+    </ol>
+  </div>
+  <div class="note">From now on, unless stated otherwise, <b>assume COMPOUND interest</b> in all questions. (Simple interest is used in special cases like some CDs.)</div>
+
+  <h2>5. Converting Compounding Frequencies</h2>
+  <p>Nominal rate r₁ compounded n₁ times/year ⟷ equivalent rate r₂ compounded n₂ times/year. The <span class="hl">effective (final) money must be equal</span> for both.</p>
+  <div class="formula">(1 + r₁/n₁)<sup>n₁</sup> = (1 + r₂/n₂)<sup>n₂</sup></div>
+
+  <div class="derivation">
+    <span class="tag">DERIVATION 🔍</span>
+    <div class="line">Take 1 year. Compounding n₁ times gives: FV₁ = P(1 + r₁/n₁)<sup>n₁</sup></div>
+    <div class="line">Compounding n₂ times gives: FV₂ = P(1 + r₂/n₂)<sup>n₂</sup></div>
+    <div class="line"><span class="arrow">➜</span> For fairness (no one should gain/lose): FV₁ = FV₂</div>
+    <div class="line"><span class="arrow">➜</span> (1 + r₂/n₂)<sup>n₂</sup> = (1 + r₁/n₁)<sup>n₁</sup></div>
+    <div class="line"><span class="arrow">➜</span> Raise both sides to power 1/n₂: 1 + r₂/n₂ = (1 + r₁/n₁)<sup>n₁/n₂</sup></div>
+    <div class="line"><span class="arrow">➜</span> <b>r₂ = n₂[ (1 + r₁/n₁)<sup>n₁/n₂</sup> − 1 ]</b> ✔</div>
+  </div>
+
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p><b>Q.</b> Bank pays 5% compounded monthly (n₁=12). What is the equivalent rate with quarterly compounding (n₂=4)?</p>
+    <ol class="steps">
+      <li>r₂ = 4[ (1 + 0.05/12)<sup>12/4</sup> − 1 ] = 4[ (1.0041667)<sup>3</sup> − 1 ]</li>
+      <li>(1.0041667)³ = 1.012552 → r₂ = 4 × 0.012552</li>
+      <li><b>r₂ ≈ 0.050209 = 5.021%</b></li>
+      <li><b>Check with $10,000:</b> Monthly: 10,000(1+0.05/12)¹² ≈ $10,511.62. Quarterly: 10,000(1+0.050209/4)⁴ ≈ $10,511.62 ✔ Same!</li>
+    </ol>
+  </div>
+
+  <h2>6. Continuous Compounding</h2>
+  <p>Compound yearly → monthly → daily → every second → <span class="hlp">infinite frequency (m → ∞)</span></p>
+  <div class="derivation">
+    <span class="tag">DERIVATION 🔍</span>
+    <div class="line">FV = P(1 + r/m)<sup>mt</sup> ... compounding m times a year for t years</div>
+    <div class="line">Take natural log: ln(FV) = ln(P) + mt·ln(1 + r/m)</div>
+    <div class="line"><span class="arrow">➜</span> Key limit: as m → ∞, m·ln(1 + r/m) → r &nbsp; (since ln(1+x) ≈ x for small x)</div>
+    <div class="line"><span class="arrow">➜</span> So ln(FV) = ln(P) + rt &nbsp;⟹&nbsp; FV = P·e<sup>rt</sup> ✔</div>
+  </div>
+  <div class="formula">FV = P · e<sup>rt</sup> <small>(continuous compounding)</small></div>
+
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅ (Doubling time)</span>
+    <p><b>Q.</b> $10,000 invested at 6% continuously compounded. How many years to DOUBLE?</p>
+    <ol class="steps">
+      <li>10,000 · e<sup>0.06t</sup> = 20,000 → e<sup>0.06t</sup> = 2</li>
+      <li>Take ln both sides: 0.06t = ln 2 = 0.6931</li>
+      <li>t = 0.6931 / 0.06 ≈ <b>11.55 years</b></li>
+      <li>⭐ Answer does <b>NOT</b> depend on the amount invested!</li>
+    </ol>
+  </div>
+  <p class="purple">💬 Einstein (reportedly): "Compound interest is the 8th wonder of the world. He who understands it, earns it… he who doesn't, pays it."</p>
+
+  <h2>7. Yield Curve</h2>
+  <p>Yield curve = graph of <span class="hlb">interest rates vs maturity</span> for Treasury bonds.</p>
+  <ul class="pen">
+    <li><b>Normal curve (upward slope):</b> long-term rates &gt; short-term rates (long-term = riskier → investors demand more).</li>
+    <li><b class="red">Inverted curve:</b> short-term rates &gt; long-term rates → market thinks near-term is risky → <span class="hlp">often a warning of RECESSION</span> (govt will cut rates to stimulate economy).</li>
+  </ul>
+  <div class="fig">
+    <svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg">
+      <line x1="35" y1="160" x2="320" y2="160" stroke="#2b2b2b" stroke-width="2"/>
+      <line x1="35" y1="160" x2="35" y2="15" stroke="#2b2b2b" stroke-width="2"/>
+      <text x="245" y="178" font-size="12" fill="#2b2b2b">Maturity →</text>
+      <text x="4" y="20" font-size="12" fill="#2b2b2b">Rate</text>
+      <path d="M40,140 Q150,90 315,55" stroke="#1b7a3d" stroke-width="3" fill="none"/>
+      <path d="M40,60 Q150,105 315,120" stroke="#c62828" stroke-width="3" fill="none" stroke-dasharray="7,4"/>
+      <text x="190" y="45" font-size="13" fill="#1b7a3d" font-weight="bold">Normal (upward) 🙂</text>
+      <text x="180" y="140" font-size="13" fill="#c62828" font-weight="bold">Inverted ⚠ recession signal</text>
+    </svg>
+    <div class="cap">Fig 2: Normal vs Inverted Yield Curve</div>
+  </div>
+
+  <h2>8. Spot Rates &amp; Forward Rates</h2>
+  <ul class="pen">
+    <li><b>Spot rate r<sub>t</sub>:</b> the rate available <span class="hl">TODAY</span> for an investment starting now and maturing at time t.</li>
+    <li><b>Forward rate f(0; t₁, t₂):</b> the rate (decided today, at time 0) for an investment that <span class="hl">starts at t₁ and ends at t₂</span>.</li>
+  </ul>
+  <div class="derivation">
+    <span class="tag">LOGIC / DERIVATION 🔍 (No-Arbitrage)</span>
+    <div class="line">Route 1: Invest directly for t₂ years → grow by (1 + r<sub>t₂</sub>)<sup>t₂</sup></div>
+    <div class="line">Route 2: Invest for t₁ years, then reinvest at forward rate f for (t₂ − t₁) years → grow by (1 + r<sub>t₁</sub>)<sup>t₁</sup>(1 + f)<sup>t₂−t₁</sup></div>
+    <div class="line"><span class="arrow">➜</span> Both routes must give the SAME result (else free profit = arbitrage):</div>
+  </div>
+  <div class="formula">(1 + r<sub>t₂</sub>)<sup>t₂</sup> = (1 + r<sub>t₁</sub>)<sup>t₁</sup> · (1 + f)<sup>t₂−t₁</sup>
+    <small>⟹ f = [ (1+r<sub>t₂</sub>)<sup>t₂</sup> / (1+r<sub>t₁</sub>)<sup>t₁</sup> ]<sup>1/(t₂−t₁)</sup> − 1</small>
+  </div>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p><b>Given spot rates:</b> 1-yr = 4%, 2-yr = 4.5%, 3-yr = 5%. Find f(0;1,2) — the 1-year rate starting after year 1.</p>
+    <ol class="steps">
+      <li>(1.045)² = (1.04)¹ (1+f)¹</li>
+      <li>1.092025 = 1.04 (1+f) → 1+f = 1.050024</li>
+      <li><b>f(0;1,2) ≈ 5.0024% ≈ 5%</b></li>
+    </ol>
+    <p><b>Similarly f(0;1,3)</b> (2-year rate starting at year 1): (1.05)³ = (1.04)(1+f)² → (1+f)² = 1.157625/1.04 = 1.113101 → 1+f = 1.055036 → <b>f ≈ 5.50%</b></p>
+  </div>
+
+  <h2>9. Variable Interest Rates (Flex CD)</h2>
+  <p>Rate is linked to a benchmark, e.g., <span class="hlb">Fed funds rate − 0.3%</span>. When benchmark moves, our rate moves:</p>
+  <ul class="pen">
+    <li>Fed rate 3% → CD earns 2.7% ; Fed rises to 3.5% → CD earns 3.2% ; Fed 4% → CD earns 3.7% …</li>
+    <li>Future interest is <span class="red">uncertain</span> — cannot calculate exactly in advance.</li>
+  </ul>
+  <div class="tip">Expect rates to <b>RISE</b> → choose <b>variable</b> (as saver). Expect rates to <b>FALL</b> → lock a <b>fixed</b> rate. For a <b>mortgage (borrower)</b> the logic is OPPOSITE — you want to pay less!</div>
+
+  <h2>10. Nominal vs Real Rates — Fisher Equation</h2>
+  <ul class="pen">
+    <li><b>Nominal rate (n):</b> the rate you actually earn on paper.</li>
+    <li><b>Inflation (i):</b> rise in prices → your money loses purchasing power. <span class="red">"Inflation is a thief!"</span></li>
+    <li><b>Real rate (r):</b> your TRUE gain in purchasing power.</li>
+  </ul>
+  <div class="formula">Approx (Fisher): real ≈ nominal − inflation<br>
+  Exact: (1 + nominal) = (1 + real)(1 + inflation)</div>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p>Nominal = 3%, Inflation = 2% → real ≈ 3 − 2 = <b>1%</b> (barely beat inflation).<br>
+    If inflation = 5% → real ≈ 3 − 5 = <b>−2% (NEGATIVE!)</b> → you LOST purchasing power. Better to spend today! 🍟</p>
+  </div>
+  <p><b class="purple">Fisher Effect:</b> When expected inflation rises, investors demand higher <i>nominal</i> rates — because they care about <i>real</i> returns. (Approx formula fails when n or i are large — use exact one.)</p>
+
+  <h2>11. Saving Rate vs Borrowing Rate</h2>
+  <p>Same bank: pays you <span class="hlg">3%</span> on deposits but charges <span class="hlp">7.5%</span> on loans (credit card 18%+ 😱).</p>
+  <p><b>Why the gap?</b> Deposits are the bank's <span class="hl">raw material</span>; loans are its <span class="hl">product</span>. Product price &gt; raw material cost = bank's profit. Banks borrow short (deposits) &amp; lend long (mortgages).</p>
+  <div class="example">
+    <span class="tag">MINI SUM ✅ (simple interest, 1 yr, $10,000)</span>
+    <p>As depositor you earn: 10,000 × 3% = <b>$300</b>. As borrower you pay: 10,000 × 7.5% = <b>$750</b>.</p>
+  </div>
+
+  <h2>12. Term to Maturity</h2>
+  <p><span class="hlb">Term to maturity</span> = how long the money stays locked (start today → future date when principal returns). CDs have a fixed term; normal savings accounts have no term (withdraw anytime) but pay <span class="red">very low rates</span>.</p>
+  <p><b>Rule:</b> <span class="hl">Longer maturity → higher rate.</span> Why? More time = more uncertainty (inflation, economy, your own needs) → you deserve extra reward for the longer lock-up.</p>
+
+  <h2>13. Default (intro)</h2>
+  <p>Longer loans also mean more time for the borrower's situation to worsen (job loss, economy). If borrower fails to pay = <span class="red">DEFAULT</span> → detailed in Lesson 2.</p>
+
+  <h2>14. Applied TVM — Retirement Problems ⭐</h2>
+  <div class="example">
+    <span class="tag">PROBLEM A — FULL SOLUTION ✅ (very important!)</span>
+    <p><b>Q.</b> Robert (25 yrs, hired 2024) wants $1,000,000 in <u>today's money</u> at end of 2064. Discount rate 3%. He deposits $H at each year-end from 2024–2063 (40 deposits, none in 2064). Investments earn 5%. Find H.</p>
+    <ol class="steps">
+      <li><b>Step 1 — Convert target to future money:</b> $1M today = 1,000,000 × (1.03)<sup>40</sup> = 1,000,000 × 3.26204 = <b>$3,262,037.79</b> needed in 2064.</li>
+      <li><b>Step 2 — Value of 40 deposits at 5%:</b> The deposits form an annuity. Their value at the end is:<br>
+      H(1.05)<sup>40</sup> + H(1.05)<sup>39</sup> + … + H(1.05)¹ … (first deposit compounds 40 yrs, last one 1 yr as he retires end-2064)</li>
+      <li><b>Step 3 — Geometric series:</b> Sum = H × 1.05 × [(1.05)<sup>40</sup> − 1]/0.05</li>
+      <li><b>Step 4 — Solve:</b> H × 126.8398 = 3,262,037.79 → <b>H ≈ $25,717.79 per year</b> ✔</li>
+    </ol>
+  </div>
+  <div class="tip">PROBLEM B type (spend $150,000/yr for 20 yrs after retiring): same logic but two annuities — accumulation phase &amp; withdrawal phase. Best solved in a <b>spreadsheet</b> — set FV of deposits = PV of withdrawals at retirement date.</div>
+</div>
+
+<!-- ================= LESSON 2 ================= -->
+<div class="page">
+  <div class="lessonchip">LESSON 2</div>
+  <h1 style="font-size:30px;">COUNTERPARTIES &amp; CREDIT RISK</h1>
+  <div class="keywords">🔑 Keywords: Credit Risk, Collateral, Regulation, Deposit Insurance, Bonds</div>
+
+  <h2>1. Risks in Finance</h2>
+  <p>Finance is full of risk — <span class="hl">"no pain, no gain"</span>. A quant's job = recognize, measure, hedge risks.</p>
+  <div class="formula" style="font-size:16px;">Risk = SYSTEMATIC (hits whole market) + NON-SYSTEMATIC (asset-specific)</div>
+  <table>
+    <tr><th>Risk</th><th>Meaning (simple)</th><th>Example</th></tr>
+    <tr><td><b>Economic</b></td><td>Bad economy hurts businesses/countries</td><td>Recession hits a new business</td></tr>
+    <tr><td><b>Equity</b></td><td>Stock prices fall unfavourably</td><td>Shares drop after buying</td></tr>
+    <tr><td><b>Interest rate</b></td><td>Rates move against you</td><td>Bank gave 5% mortgages; rates jump to 8% → bank sad 😢. Or your 4.5% coupon bond vs new 6.4% bonds → sell below par → capital loss</td></tr>
+    <tr><td><b>Model</b></td><td>Wrong model → wrong answers</td><td>Bad pricing model → bad investments</td></tr>
+  </table>
+
+  <h2>2. Overdue Payment vs Default</h2>
+  <ul class="pen">
+    <li><b class="orange">Overdue payment:</b> payment past the due date but usually gets paid — late fees, grace periods apply. (Sometimes just holidays/weekends delay processing.)</li>
+    <li><b class="red">Default:</b> an overdue payment that <span class="hlp">remains UNPAID</span> — borrower fails on interest, principal, or both. Much more serious!</li>
+  </ul>
+  <p><b class="purple">Debt covenants:</b> written restrictions lenders impose on companies (in the loan agreement) so companies don't over-borrow. <span class="red">Default on ONE loan can trigger default on ALL loans</span> → if no liquidity → <b>bankruptcy</b>.</p>
+  <p>📖 Fun fact: "Bankruptcy" comes from Italian <i>banca rotta</i> = <span class="hl">"broken bench"</span> — money dealers who ran out of money had their bench broken → out of business! Today, bankruptcy laws protect borrowers (no debtor's prison), but their <b>credit reputation suffers</b> → future loans cost more.</p>
+
+  <h2>3. Credit Risk</h2>
+  <div class="formula" style="font-size:16px;">Credit Risk = risk that the LENDER does not receive full principal + interest promised in the contract</div>
+  <ul class="pen">
+    <li>Caused by <b>inability</b> or even <b>unwillingness</b> of the borrower to pay.</li>
+    <li>Affects the <span class="hl">lender</span>, not the borrower.</li>
+    <li>Needs a <span class="hl">contractual obligation</span> — don't confuse with market risk!</li>
+  </ul>
+  <div class="example">
+    <span class="tag">CONCEPT CHECK ✅</span>
+    <p><b>Q.</b> Investor buys 10,000 shares @ $15; price falls to $12 and company cancels dividends. Student says "this is credit risk". Correct?</p>
+    <p><b>A. NO!</b> Dividends are at the company's discretion (not promised like bond coupons), and the company never guaranteed share value. This is <b>market/equity risk</b>, NOT credit risk. Credit risk needs a contractual promise.</p>
+  </div>
+
+  <h2>4. Deposit Insurance 🛡</h2>
+  <p>Banks don't keep your money in a locker — they invest/lend it. Historically, bad investments → <span class="red">bank runs</span> → depositors lost money.</p>
+  <p><b>Solution:</b> Deposit insurance corporations (members of IADI internationally):</p>
+  <ul class="pen">
+    <li><b>USA → FDIC:</b> insured up to <span class="hlg">$250,000</span> per depositor</li>
+    <li><b>South Korea → KDIC:</b> up to ₩20 million per depositor (₩50M per insurance policy holder)</li>
+  </ul>
+  <p>They guarantee deposits (with govt backing) even if the bank fails → builds <span class="hl">trust &amp; confidence in the entire financial system</span>. Banks = cornerstone of finance.</p>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p><b>Q.</b> You have $100,000 in a US bank. Bank fails, says it will pay only 40 cents per dollar. How much do you get?</p>
+    <p><b>A.</b> If FDIC insured → full <b>$100,000</b> back (limit is $250,000, you're within it ✔). If NOT insured → 100,000 × 0.40 = <b>$40,000</b> only 😔</p>
+  </div>
+
+  <h2>5. Collateral</h2>
+  <p><span class="hlb">Collateral</span> = financial or physical asset kept as <b>backup</b> for the loan.</p>
+  <ul class="pen">
+    <li>Car loan → the car is collateral. Pay on time → keep using the car. Default → <span class="red">bank takes the car</span>.</li>
+    <li>Banks don't actually want cars (they're not in the auto business!) — collateral just protects them so they can focus on banking.</li>
+  </ul>
+
+  <h2>6. Types of Financial Institutions</h2>
+  <table>
+    <tr><th>Type</th><th>What they do</th><th>Examples</th></tr>
+    <tr><td><b>Depository</b></td><td>Take deposits, give loans</td><td>Banks, credit unions, S&amp;L companies, trust cos.</td></tr>
+    <tr><td><b>Contractual</b></td><td>Long-term contractual services</td><td>Insurance companies, pension funds</td></tr>
+    <tr><td><b>Investment</b></td><td>Originate / manage investments</td><td>Investment banks, mutual funds, hedge funds, underwriters</td></tr>
+  </table>
+  <p>Big multinational banks can do <b>all three</b> (loan + insurance + investment account). FinTech apps now do some services cheaper (e.g., money transfer with tiny fees vs hefty bank wiring charges).</p>
+  <div class="note"><b>"Too big to fail":</b> if a giant institution collapses, it can wreck the whole system (deposits gone, pensions unpaid, panic). Answer = <b>REGULATION</b>.</div>
+
+  <h2>7. Regulation ⚖</h2>
+  <p><b>Football analogy ⚽:</b> rules + referees make the game safe, fair &amp; trustworthy. Without rules → fouls, cheating, chaos. Same in finance:</p>
+  <ul class="pen">
+    <li>Regulation = rules + <b>enforcement</b> (fines, penalties for breaking them).</li>
+    <li>Protects ALL stakeholders: consumers, taxpayers, workers, pensioners, investors, businesses… everyone.</li>
+    <li>Post-crisis example: <span class="hl">no-documentation loans</span> became much harder → banks must verify borrowers properly → lower aggregate credit risk.</li>
+    <li>Hard part: with billions of transactions, finding the culprit / whose authority applies is tough.</li>
+  </ul>
+
+  <h2>8. Basics of BONDS 📜</h2>
+  <div class="formula" style="font-size:16px;">Bond = debt security: issuer (borrower) pays bondholder (lender) periodic INTEREST (coupons) + repays PRINCIPAL (face value) at maturity</div>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅ (US Treasury bond)</span>
+    <p>Issued 1/1/2024, maturity 12/31/2025, coupon 4%, notional $20 billion, <b>semi-annual</b> payments.</p>
+    <ol class="steps">
+      <li>Each coupon = 20,000,000,000 × 4%/2 = <b>$400,000,000 every 6 months</b></li>
+      <li>Dates: 6/30/24, 12/31/24, 6/30/25, 12/31/25</li>
+      <li>Principal repayment: $20B on 12/31/2025</li>
+    </ol>
+    <p>⭐ <b>Rule:</b> semi-annual coupon = (coupon rate ÷ 2) × face value</p>
+  </div>
+  <p><b>Why issue bonds?</b> Govt → fund public projects (roads, bridges, schools). Companies → finance projects at a cost lower than the project's return.</p>
+  <h3>Bond vs CD (both are "fixed income")</h3>
+  <table>
+    <tr><th></th><th>CD (savings)</th><th>Bond</th></tr>
+    <tr><td>Tradable?</td><td>❌ No — locked, harsh penalty for early exit</td><td>✅ Yes — it's an ASSET with a market price</td></tr>
+    <tr><td>Value fluctuates?</td><td>No</td><td>Yes, with the market</td></tr>
+    <tr><td>Exit before maturity</td><td>Penalty</td><td>Just sell it at market price</td></tr>
+  </table>
+  <p><b>3 ways to get paid from a bond:</b> ① wait for coupon dates ② hold till maturity → principal back ③ <span class="hlg">sell before maturity at market price</span>.</p>
+</div>
+
+<!-- ================= LESSON 3 ================= -->
+<div class="page">
+  <div class="lessonchip">LESSON 3</div>
+  <h1 style="font-size:30px;">BUYING AND SELLING SHORT</h1>
+  <div class="keywords">🔑 Keywords: Discounting, Credit Risk, Buy-Side, Sell-Side, Shorting, Financing</div>
+
+  <h2>1. Bond Pricing = Discounting Cash Flows</h2>
+  <p>❌ Can't just ADD all cash flows — they occur at different times (TVM!).<br>✅ <span class="hl">Discount each cash flow to today, then add.</span></p>
+  <div class="formula">Discount factor (year t) = 1 / (1 + r)<sup>t</sup></div>
+  <div class="example">
+    <span class="tag">MINI SUMS ✅ (r = 4%)</span>
+    <p>$1,000 in 1 yr → PV = 1000/1.04 = <b>$961.54</b> (factor 0.9615)<br>
+    $3,000 in 2 yrs → PV = 3000/(1.04)² = 3000/1.0816 = <b>$2,773.67</b> (factor 0.9246)</p>
+  </div>
+
+  <h2>2. Actual Bond Pricing ⭐</h2>
+  <div class="formula">Price = Σ  C/(1+r)<sup>t</sup>  +  F/(1+r)<sup>T</sup>
+    <small>C = coupon, F = face value, r = market/discount rate, T = maturity</small>
+  </div>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅ (Bond PQU)</span>
+    <p>Face $1,000,000 | coupon 4.5% annual | maturity 5 yrs | market rate r = 5%</p>
+    <ol class="steps">
+      <li>Coupon C = 1,000,000 × 4.5% = $45,000 per year (yrs 1–4), year 5 = 45,000 + 1,000,000 = $1,045,000</li>
+      <li>Price = 45,000/1.05 + 45,000/1.05² + 45,000/1.05³ + 45,000/1.05⁴ + 1,045,000/1.05⁵</li>
+      <li>= 42,857.14 + 40,816.33 + 38,872.69 + 37,021.61 + 818,784.85</li>
+      <li><b>Price ≈ $978,352.62 → trading BELOW PAR</b> (less than $1M)</li>
+    </ol>
+    <p><b>Why below par?</b> Our bond pays only 4.5% but the market gives 5%. Nobody will pay full price for a weaker coupon → seller must discount. (Math reason: discount rate &gt; coupon rate.)</p>
+  </div>
+  <div class="note"><b>GOLDEN INVERSE RULE:</b> Interest rates ↑ ⟹ Bond prices ↓ (and vice-versa).<br>
+  coupon = market rate → AT par | coupon &lt; market → BELOW par | coupon &gt; market → ABOVE par</div>
+  <div class="fig">
+    <svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+      <line x1="35" y1="150" x2="320" y2="150" stroke="#2b2b2b" stroke-width="2"/>
+      <line x1="35" y1="150" x2="35" y2="15" stroke="#2b2b2b" stroke-width="2"/>
+      <text x="255" y="168" font-size="12" fill="#2b2b2b">Yield (r) →</text>
+      <text x="4" y="20" font-size="12" fill="#2b2b2b">Price</text>
+      <path d="M50,30 Q120,120 310,138" stroke="#c62828" stroke-width="3" fill="none"/>
+      <text x="150" y="70" font-size="14" fill="#c62828" font-weight="bold">Price ↓ as Yield ↑</text>
+    </svg>
+    <div class="cap">Fig 3: Inverse relation between bond price &amp; yield</div>
+  </div>
+
+  <h2>3. Yield to Maturity (YTM)</h2>
+  <p><span class="hlb">YTM = the rate x that makes the PV of all bond cash flows equal to the current market price</span> (assuming we hold till maturity).</p>
+  <ul class="pen">
+    <li>Bond at par → <b>YTM = coupon rate</b> (easy case, e.g., $1,000 bond @ $1,000, 4% coupon → YTM = 4%).</li>
+    <li>Bond BELOW par → YTM &gt; coupon. Example: price $950, face $1,000, coupon 4%, 4 yrs → solve<br>
+    950 = 40/(1+x) + 40/(1+x)² + 40/(1+x)³ + 1040/(1+x)⁴ → <b>x ≈ 5.424%</b> (non-linear → use Goal Seek / numerical methods).</li>
+  </ul>
+  <h3>Semi-annual coupon bonds (US standard)</h3>
+  <div class="formula">Divide coupon rate by 2, divide r by 2, and use 2T periods
+    <small>P = Σ (C/2)/(1+r/2)<sup>k</sup> + F/(1+r/2)<sup>2T</sup>, k = 1…2T</small>
+  </div>
+  <h3>General formula (rates/cash flows can vary)</h3>
+  <div class="formula">P = Σ  CF<sub>i</sub> / (1 + r<sub>i</sub>)<sup>t<sub>i</sub></sup>
+    <small>each cash flow discounted at its own maturity's rate — the r<sub>i</sub> come from ZERO-COUPON bonds</small>
+  </div>
+
+  <h2>4. Zero-Coupon Bonds ("Zeros")</h2>
+  <ul class="pen">
+    <li>Pay <b>no coupons</b>; sold at a (deep) <b>discount</b>; pay face value at maturity.</li>
+    <li>Used to extract spot rates r<sub>t</sub> for discounting.</li>
+    <li>Carry market risk + sizable <span class="red">credit risk</span> (issuer may default before paying ANY interest!).</li>
+  </ul>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅</span>
+    <p>Zero: face $1,000, maturity 10 yrs, price $630. Yield?</p>
+    <p>r = (1000/630)<sup>1/10</sup> − 1 = (1.5873)<sup>0.1</sup> − 1 ≈ <b>4.73%</b> → so r₁₀ ≈ 4.73%</p>
+  </div>
+
+  <h2>5. Why Corporate Yield &gt; Government Yield?</h2>
+  <p>Treasury 2-yr bond yield 3%, company XYZ 2-yr yield 4%. Same maturity — why different? → <b class="red">CREDIT RISK!</b></p>
+  <ul class="pen">
+    <li>Govt = ~zero default risk (can set monetary policy, <span class="hl">print money</span>, raise taxes) → its yield = <span class="hlg">risk-free rate</span>.</li>
+    <li>Company can't print money → some default probability → must offer <b>extra yield</b> to attract buyers → same coupon/maturity bond is <b>cheaper</b> than the risk-free one.</li>
+    <li>Extra yield is NOT free money — defaults do happen!</li>
+  </ul>
+
+  <h2>6. Buy-Side vs Sell-Side</h2>
+  <div class="note">The names do NOT mean one buys and one sells — both do both! The difference is <b>whose money</b> and <b>what job</b>.</div>
+  <table>
+    <tr><th></th><th>BUY-SIDE 🧺</th><th>SELL-SIDE 🏪</th></tr>
+    <tr><td>Acts for</td><td>Clients/investors (fiduciary)</td><td>The investment bank itself</td></tr>
+    <tr><td>Job</td><td>Manage client money per their goals &amp; risk tolerance</td><td><b>Market-making</b>: always quote a buy &amp; a sell price (two-sided market)</td></tr>
+    <tr><td>Examples</td><td>Mutual funds, pension funds, hedge funds</td><td>Broker-dealers, investment banks</td></tr>
+    <tr><td>Earns from</td><td>Management fee + performance/incentive fee</td><td><span class="hlp">Bid-Ask SPREAD</span> + commissions</td></tr>
+  </table>
+
+  <h2>7. Bid-Ask Spread</h2>
+  <ul class="pen">
+    <li><b>Bid</b> = price dealer will <b>BUY</b> at (lower). <b>Ask/Offer</b> = price dealer will <b>SELL</b> at (higher).</li>
+    <li>Example: ABC sells bond XYZ @ $101.00 (ask), buys @ $100.50 (bid) → spread = $0.50 = dealer's profit.</li>
+  </ul>
+  <div class="example">
+    <span class="tag">AIRPORT KIOSK ANALOGY ✈</span>
+    <p>Convert €100 → ¥12,800. Flight cancelled, convert back → get only €95. The kiosk sold yen high &amp; bought back low. Do this repeatedly → you go broke, kiosk gets rich! That gap = bid-ask spread.</p>
+  </div>
+
+  <h2>8. SHORTING (Selling Short) 🔻</h2>
+  <p>Normal trade: <span class="hlg">buy low → sell high</span>. Shorting reverses the ORDER: <span class="hlp">sell high FIRST → buy low LATER</span>. But how to sell what you don't own? <b>Borrow it!</b></p>
+  <div class="derivation">
+    <span class="tag">5 STEPS OF A SHORT SALE 🔍</span>
+    <div class="line">① <b>Borrow</b> the security (via broker, from an owner willing to lend)</div>
+    <div class="line">② <b>Sell</b> it in the market → receive cash</div>
+    <div class="line">③ <b>Pay fees</b> to the lender (financing cost, grows with time)</div>
+    <div class="line">④ <b>Buy back</b> later — hopefully cheaper = "covering the short"</div>
+    <div class="line">⑤ <b>Return</b> the security to the original owner</div>
+    <div class="line"><span class="arrow">➜</span> Profit = Sell price − Buy-back price − financing cost − fees</div>
+  </div>
+  <h3>Margin Account rules (US) 💼</h3>
+  <ul class="pen">
+    <li>Need broker approval for a <b>margin account</b> (borrowing shares ≈ a margin loan; you pay interest on it).</li>
+    <li>Initial collateral (cash/equities) ≥ <span class="hl">50% of the short position</span>. Can't touch the short-sale cash.</li>
+    <li>Maintenance margin ≥ <span class="hl">25%</span> (exchange minimum; broker may demand more).</li>
+    <li>If price RISES → <b class="red">margin call</b>: add collateral, or broker force-buys &amp; returns the shares.</li>
+  </ul>
+  <div class="example">
+    <span class="tag">SOLVED EXAMPLE ✅ (Fund ABC shorts MNQ)</span>
+    <p>MNQ trades ~$80; analysts think fair value $60. Broker locates 500,000 shares, lending rate 5%/yr. Shares sold short @ $79.20. After 6 months price = $72; bought back @ $72.33.</p>
+    <ol class="steps">
+      <li><b>Value of shares borrowed:</b> 500,000 × 80 = $40,000,000 (basis for financing cost)</li>
+      <li><b>Proceeds of short sale:</b> 500,000 × 79.20 = $39,600,000</li>
+      <li><b>Cost to buy back (cover):</b> 500,000 × 72.33 = $36,165,000</li>
+      <li><b>Gross profit:</b> 39,600,000 − 36,165,000 = $3,435,000</li>
+      <li><b>Financing cost (compound, 6 months):</b> 40,000,000 × [(1.05)<sup>0.5</sup> − 1] = 40,000,000 × 0.024695 ≈ $987,803</li>
+      <li><b>Net profit ≈ 3,435,000 − 987,803 ≈ $2.447 million</b> ✔</li>
+    </ol>
+  </div>
+  <h3>Financing cost is TWO-fold for bonds!</h3>
+  <ul class="pen">
+    <li>① Financing fee = interest for borrowing the security.</li>
+    <li>② <b>Income cost:</b> when the bond pays its coupon, the SHORT SELLER must pay that coupon amount to the original owner (owner holds an "I.O.U." and must not lose income).</li>
+  </ul>
+  <div class="note">Shorting has <b>UNLIMITED loss potential</b> — prices can rise without any ceiling (stocks, Bitcoin!). During the global recession, regulators even banned shorting of financial stocks to restore confidence.</div>
+  <p><b class="green">Good side of shorting:</b> stops assets from staying overvalued, adds liquidity, used for hedging. Without shorting, markets can "freeze" (like vacant commercial real estate — ask price ≫ bid price, no deal, property sits empty for years).</p>
+
+  <h2>9. Short Squeeze 💥</h2>
+  <ul class="pen">
+    <li><b>Short interest:</b> shares sold short &amp; not yet covered (often % of public float). ↑ short interest = bearish sentiment; ↓ = bullish.</li>
+    <li>Short interest CAN exceed 100% of shares! (Same shares get lent → sold → new owner lends again → shorted again…)</li>
+  </ul>
+  <div class="example">
+    <span class="tag">HOW &gt;100% HAPPENS ✅</span>
+    <p>ABC has 100 shares. Fund TTT owns 50, lends → XYZ shorts them → MNQ buys → MNQ lends the 50 → DEF shorts → KHL buys → KHL lends → RST shorts.<br>
+    Total shorted = 50+50+50 = 150 → <b>short interest = 150%</b> of available shares!</p>
+  </div>
+  <p><b>Squeeze mechanics:</b> heavily-shorted stock price suddenly ↑ → shorts rush to buy back (cover) → huge buying volume → price ↑ MORE → more shorts forced to cover → <span class="hlp">cascade of price jumps</span>. Plus borrowing costs shoot up → double pain for shorts.</p>
+  <div class="example">
+    <span class="tag">CASE STUDY: GAMESTOP (GME), Q1 2021 🎮</span>
+    <ol class="steps">
+      <li>Jan 4: $17.25. Jan 11: Ryan Cohen (10%+ owner) joins board → bullish signal → Jan 13: $38.65.</li>
+      <li>Short interest hits <b>~140%</b>! Citron Research mocks retail buyers ("suckers"), then retreats.</li>
+      <li>Jan 22: $65 → Jan 25: Citadel injects $2.75B into Melvin Capital (big GME short); $76.79.</li>
+      <li>Jan 26: Elon Musk tweets <b>"Gamestonk!"</b> + r/WallStreetBets frenzy → closes $147.98.</li>
+      <li>Jan 27: closes <b>$347.51</b> (touched $380). Jan 28: heading to ~$500 pre-open → apps HALT buying (allow selling) → anger + manipulation suspicion → closes $193.60.</li>
+      <li>Feb: US Treasury meeting, Congressional hearings; stock falls to ~$40–50; Mar 12 back to $264. (Note: 4:1 split in July 2022, so charts now show ~¼ prices.)</li>
+      <li><b>Damage:</b> Melvin Capital lost 30% in Jan alone (later 53% on this one position); D1 Capital lost ~20% (~$4B).</li>
+    </ol>
+  </div>
+  <div class="tip">Lesson: shorting is legitimate (price discovery + liquidity) but <b>tough &amp; risky</b> — squeezes can be catastrophic.</div>
+</div>
+
+<!-- ================= LESSON 4 ================= -->
+<div class="page">
+  <div class="lessonchip">LESSON 4</div>
+  <h1 style="font-size:30px;">SURVEYING THE FINANCIAL INDUSTRY</h1>
+  <div class="keywords">🔑 Keywords: Central Bank, Monetary Policy, Investment Banks, Market Risk, Reinvestment Risk, Default Risk</div>
+
+  <h2>1. Central Banks 🏛</h2>
+  <ul class="pen">
+    <li>Purpose: <span class="hl">stability &amp; transparency</span> for the country's economy.</li>
+    <li>Jobs: keep <b>inflation</b> in check, support <b>maximum employment</b>, run healthy <b>monetary policy</b>.</li>
+    <li>Set the rates at which <b>banks borrow/lend from each other</b> → ensures banks always have funds to operate.</li>
+    <li>Ultimate targets: <span class="hlb">inflation rate</span> &amp; <span class="hlb">foreign exchange rate</span>.</li>
+  </ul>
+
+  <h2>2. Investment Banks</h2>
+  <p><b>6 main functions (learn this list!):</b></p>
+  <ul class="pen">
+    <li>① Underwrite securities &nbsp; ② Help with IPO issuance &nbsp; ③ Sales &amp; trading with investors</li>
+    <li>④ Research for clients &nbsp; ⑤ Bundle &amp; sell securitized products &nbsp; ⑥ Mergers &amp; Acquisitions (M&amp;A)</li>
+  </ul>
+  <p>They constantly monitor <b class="red">credit risk</b> — of clients, investments, even each other.</p>
+  <h3>Credit scores</h3>
+  <p><span class="hlg">FICO score (USA)</span> = Fair Isaac's Company model → one number from <b>300 to 850</b> summarizing an individual's creditworthiness. Saves every lender from doing its own full assessment; good credit → cheaper loans.</p>
+  <h3>Maturity buckets &amp; products</h3>
+  <table>
+    <tr><th>Bucket</th><th>Duration</th><th>Typical products</th></tr>
+    <tr><td>Short-term</td><td>&lt; 1 year</td><td>Commercial paper, CDs, Treasury bills</td></tr>
+    <tr><td>Intermediate</td><td>1 – 10 years</td><td>Treasury notes</td></tr>
+    <tr><td>Long-term</td><td>&gt; 10 years</td><td>Treasury bonds</td></tr>
+  </table>
+
+  <h2>3. Commercial Banks</h2>
+  <ul class="pen">
+    <li>The familiar ones: deposits, credit cards, loans, mortgages.</li>
+    <li><b class="purple">Glass-Steagall Act 1933:</b> forced a strict WALL between commercial &amp; investment banking (JP Morgan had to cut services).</li>
+    <li>Banks dodged via holding companies → <b>Bank Holding Company Act 1956</b> gave the Fed more oversight.</li>
+    <li><b class="red">1999: Glass-Steagall REPEALED</b> → today the distinction barely matters (JPMorgan Chase = huge commercial bank AND top IPO underwriter).</li>
+  </ul>
+  <h3>Did the repeal cause the 2008 crisis? (Debate — great for assignments!)</h3>
+  <ul class="pen">
+    <li><b>YES side:</b> repeal → mergers → giant institutions loaded with mortgage-backed securities → subprime implosion 2008–09.</li>
+    <li><b>NO side:</b> Lehman Brothers, Bear Stearns, Goldman Sachs were never commercial banks; Countrywide Financial didn't even take deposits. Alternative theory: HUD pushed Fannie Mae &amp; Freddie Mac to buy affordable-housing mortgages → lenders gave loans to people with no down payment / unemployment benefits as income.</li>
+    <li><b>Countrywide (CEO Angelo Mozilo):</b> pumped out complex mortgages to borrowers who didn't understand or afford them, then packaged &amp; sold them to Wall Street — didn't care what happened after signing. Perfect villain example for risk discussion!</li>
+  </ul>
+
+  <h2>4. Four Risks of Fixed-Income Products ⭐ (compare CD vs Bond)</h2>
+  <table>
+    <tr><th>Risk</th><th>Simple meaning</th><th>CD</th><th>Bond</th></tr>
+    <tr><td><b>Market risk</b></td><td>Price falls before you sell</td><td>Immune (fixed rate)</td><td>Exposed — unless held to maturity (no default → no price worry)</td></tr>
+    <tr><td><b>Reinvestment risk</b></td><td>Rates are LOWER when you reinvest coupons / renew</td><td>Yes — at renewal</td><td>Yes — on coupons</td></tr>
+    <tr><td><b>Default risk</b></td><td>Issuer fails to pay interest/principal</td><td>No (insured!)</td><td>Yes for risky bonds; no for risk-free govt bonds</td></tr>
+    <tr><td><b>Inflation risk</b></td><td>Money received is worth less</td><td colspan="2">Both! e.g., earn 3%, inflation 8% → real return = <b>−5%</b> 😱 (central banks fight this by raising rates)</td></tr>
+  </table>
+  <div class="note"><b>Default risk is just the EXTREME form of credit risk.</b> Even without default, a mere <u>credit-rating downgrade</u> makes the bond riskier → price drops → you sell for less. Credit risk = degradation of creditworthiness (small scale: score dips; extreme: default).</div>
+
+  <h2>5. Credit Risk for Lenders = 4 Components</h2>
+  <ul class="pen">
+    <li><b class="red">① Fraud risk:</b> is the applicant genuine? (e.g., takes a loan with zero intention to repay — spends it on a vacation! Countrywide barely checked.)</li>
+    <li><b class="red">② Default risk:</b> failure to pay. Linked to <b>counterparty risk</b>: A fails to pay B → B fails to pay C → chain/domino of defaults.</li>
+    <li><b class="red">③ Credit spread risk:</b> spread of corporate bonds over risk-free bonds reflects perceived risk. Spread WIDENS → asset values fall → losses for lenders/investors.</li>
+    <li><b class="red">④ Concentration risk:</b> portfolio stuck in ONE sector/asset class (Countrywide ≈ all real estate!) → one bad event = massive loss; can even become <b>systemic risk</b> (domino across sectors).</li>
+  </ul>
+
+  <h2>6. Exchanges vs OTC Markets</h2>
+  <table>
+    <tr><th></th><th>EXCHANGE 🏦</th><th>OTC (Over-The-Counter) 🤝</th></tr>
+    <tr><td>Structure</td><td>Centralized marketplace, well-defined rules for processing &amp; clearing</td><td>Decentralized — direct deals between counterparties</td></tr>
+    <tr><td>Transparency</td><td>High — everyone sees bids, offers, sizes, past trades</td><td>Low — different venues may show slightly different prices; hard to know the "fair" price</td></tr>
+    <tr><td>Credit risk</td><td><span class="hlg">ELIMINATED — the exchange takes it!</span> Monitors margins, demands intraday top-ups, can force-liquidate</td><td>Borne by the counterparties themselves (brokers only facilitate — they take NO credit risk)</td></tr>
+    <tr><td>Examples</td><td>Stocks (trade on one exchange)</td><td>Many bonds trade OTC</td></tr>
+  </table>
+  <div class="example">
+    <span class="tag">MAMADOU EXAMPLE ✅</span>
+    <p>Mamadou borrows your security &amp; shorts it. Price jumps ↑ — now your credit risk rises (harder for him to cover). The <b>exchange</b> monitors the value and forces Mamadou to post extra funds (even intraday). Can't post? → forced buy-in, security returned to you. That's how exchanges kill credit risk.</p>
+  </div>
+
+  <h2>7. Big Picture Recap 🧵</h2>
+  <ul class="pen">
+    <li>Module theme = <b class="red">CREDIT RISK</b> everywhere: loans, deposits, bonds, shorting, financing.</li>
+    <li>Fighters against credit risk: <span class="hlg">deposit insurance</span>, <span class="hlg">collateral</span>, <span class="hlg">regulation</span>, <span class="hlg">exchanges</span>, <span class="hlg">central banks</span>.</li>
+    <li>Next up: equities &amp; crypto → main challenge shifts from credit risk to <b>VOLATILITY</b>.</li>
+  </ul>
+
+  <div class="divider">✦ ✦ ✦</div>
+  <h2>📌 MASTER FORMULA SHEET (last page of register!)</h2>
+  <div class="formula" style="text-align:left; font-size:16px;">
+    1️⃣ Simple: FV = P(1 + rt)<br>
+    2️⃣ Compound: FV = P(1+r)<sup>t</sup> | PV = FV/(1+r)<sup>t</sup> | r = (FV/PV)<sup>1/t</sup> − 1<br>
+    3️⃣ Frequency: (1 + r₁/n₁)<sup>n₁</sup> = (1 + r₂/n₂)<sup>n₂</sup><br>
+    4️⃣ Continuous: FV = P·e<sup>rt</sup> | doubling: t = ln2 / r<br>
+    5️⃣ Fisher: (1+n) = (1+r)(1+i) | approx: r ≈ n − i<br>
+    6️⃣ Forward rate: (1+r<sub>t₂</sub>)<sup>t₂</sup> = (1+r<sub>t₁</sub>)<sup>t₁</sup>(1+f)<sup>t₂−t₁</sup><br>
+    7️⃣ Bond price: P = Σ C/(1+r)<sup>t</sup> + F/(1+r)<sup>T</sup> (semi-annual → C/2, r/2, 2T)<br>
+    8️⃣ Zero yield: r = (F/Price)<sup>1/t</sup> − 1<br>
+    9️⃣ Semi-annual coupon = (coupon rate/2) × Face<br>
+    🔟 Annuity FV of deposits H: H(1+r)[(1+r)<sup>N</sup> − 1]/r (deposits at year-end, valued 1 yr after last)
+  </div>
+  <p style="text-align:center;" class="green">✍ ALL THE BEST FOR ASSIGNMENTS &amp; QUIZ! 🍀</p>
+</div>
+
+</body>
+</html>
