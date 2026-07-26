@@ -8,7 +8,7 @@ Personal revision notes from WorldQuant University's MS in Financial Engineering
 
 ```
 index.html                              # Home — Degrees at WQU
-masterOfScienceInFinancialEngineering/
+Master of Science in Financial Engineering/
   index.html                            # Subjects in MFE
   26-07-mscfe-560-financial-markets/
     index.html                          # Modules in this subject
